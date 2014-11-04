@@ -1,0 +1,85 @@
+#Example YAML Configuration Outline
+base_url: 'http://www.your_site.com'
+default_screen: 'example_screen'
+screen_transition_sleep: 1
+throttle_element_interactions:
+  click: 1
+  exists?: 1
+  visible?: 1
+views:
+  example_view:
+    elements:
+      example_view_element:
+        xpath: '//xpath/to/element'
+        css: '#css_path'
+screens:
+  example_prompt:
+    accept:
+      after:
+        change_to_previous_screen: true
+    dismiss:
+      after:
+        change_screen: 'example_screen'
+  example_screen:
+    modals:
+      search_modal:
+        elements:
+          example_modal_element:
+            xpath: '//xpath/path/to/element'
+            css: '#css_path_to_element'
+            click:
+              after:
+                close_modal: true #Todo, implement
+    included_views:
+      - 'example_view'
+    automation_screen_changes:
+      - 'second_example_screen'
+    live?: #Todo: always call exists?
+      before:
+        sleep: 1
+        wait_for_elements: #Todo: change wait to wait_for_elements
+          - element_name: 'example_element'
+            exists?: true
+            visible?: true
+            text: 'Text should equal this string'
+      elements:
+        - element_name: 'example_element'
+          exists?: (Boolean) #true|false
+          visible?: (Boolean) #true|false
+          text: (String) #Match text
+      after:
+    before_load:
+      sleep:
+      wait_for_elements:
+    elements:
+      iframe_element:
+        xpath: '//xpath/to/iframe'
+      example_element:
+        xpath:
+        css:
+        click:
+          before:
+          after:
+            change_screen:
+      example_element_array:
+        in_iframe: 'iframe_element'
+        multiple: true
+        xpath: '//xpath/to/elements'
+        css: '#css_path_to_elements'
+        click:
+          before:
+          after:
+            close_window: true
+            show_modal: 'example_modal'
+            change_screen: ''
+            sleep: 1
+            change_to_previous_screen: true
+      example_element_hash:
+        multiple: true
+        define_elements_by: 'value'
+        xpath: '//xpath/to/element'
+        css: '#css_path_to_element'
+        custom_methods:
+          example_custom_method:
+            element_method: 'text'
+            evaluate: 'text.gsub(/\s\d+/,"").to_s.to_i'

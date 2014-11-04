@@ -1,0 +1,4 @@
+source 'https://rubygems.org'
+
+gem 'automation_object'
+gem 'selenium-webdriver', '~> 2.41.0'

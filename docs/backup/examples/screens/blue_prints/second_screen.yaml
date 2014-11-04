@@ -1,0 +1,23 @@
+screens:
+  second_screen:
+    included_views:
+      - 'progress_bar_view'
+    before_load:
+      wait_for_elements:
+        - element_name: 'previous_button'
+          visible?: true
+        - element_name: 'next_button'
+          invisible?: false
+        - element_name: 'progress_bar'
+          invisible?: true
+    elements:
+      previous_button:
+        css: '#screen_two .previous_button'
+        click:
+          after:
+            change_screen: 'first_screen'
+      next_button:
+        css: '#screen_two .next_button'
+        click:
+          after:
+            change_screen: 'third_screen'
