@@ -1,0 +1,2 @@
+AutomationObject Framework README
+----
