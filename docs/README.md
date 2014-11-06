@@ -1,7 +1,11 @@
 AutomationObject Framework README
 ----
 
+Table of Contents:
 *    [Putting it together](#putting_it_together)
+*    [Blue Prints](#blue_prints)
+*    [Framework Methods](#framework_methods)
+*    [Examples](#examples)
 
 ### Putting it together
 
