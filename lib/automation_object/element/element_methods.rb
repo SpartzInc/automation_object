@@ -120,6 +120,8 @@ module AutomationObject
     #Check to see if this gets fixed in the future otherwise leave it
     def click
       self.scroll_into_view
+      element_object = self.get_element
+      return element_object.click
 
       #Is a browser and mobile?
       if self.framework_object.is_mobile? and self.framework_object.is_browser?

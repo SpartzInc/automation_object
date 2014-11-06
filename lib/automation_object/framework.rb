@@ -255,6 +255,9 @@ module AutomationObject
       #Reset previous screen if needed
       self.reset_screen(self.previous_screen_class) if self.previous_screen_class
 
+      #Reset new screen just in case
+      self.reset_screen(screen_class_symbol)
+
       #Sleep if default sleep
       if self.configuration['screen_transition_sleep']
         transition_sleep = self.configuration['screen_transition_sleep'].to_f
