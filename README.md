@@ -1,4 +1,4 @@
-## AutomationObject Framework for UI Automation
+## AutomationObject Framework for UI Automation (Ruby)
 
 YAML Configuration Based DSL Framework for UI automation (Selenium/Appium)
 
@@ -6,7 +6,7 @@ Use YAML configurations to build blue prints of your app or website.  Define wha
 screens, elements, relationships exist in the configurations which can then be used as
 a DSL framework to interact with the website or app.
 
-### Features:
+### Features
 
 1. Use YAML configuration files to represent UI of an App/Website
 2. Add all kinds of relationships between screens and elements for DSL framework
@@ -39,3 +39,8 @@ __[Documentation on AutomationObject](docs/README.md)__ contains all examples an
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+### Fair Warning
+
+This is still a work in progress and there is a lot of coupling between objects at this point.  The framework
+does work very well but might not be perfect yet.
