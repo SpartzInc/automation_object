@@ -1,8 +1,7 @@
 AutomationObject Framework README
 ----
 
-Following README is broken into a few different parts.  How to put it together below, how to create blue prints,
-available methods on the framework at every different object level, and finally the examples to help you through all this.
+*    [Putting it together](#putting_it_together)
 
 ### Putting it together
 
@@ -32,7 +31,7 @@ automation_object.search_screen.search_button.click
 ```
 
 As you can see from the small hypothetical example above, you can define screens, elements in YAML configurations and
-working with the elements through AutomationObject::Framework instance.
+work with the elements through AutomationObject::Framework instance.
 
 Here is the combined simple YAML configuration for the hypothetical example above:
 ```
