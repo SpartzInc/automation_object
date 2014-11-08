@@ -26,4 +26,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'awesome_print', '~> 1.2', '>= 1.2.0'
   spec.add_dependency 'thread', '~> 0.1', '>= 0.1.4'
   spec.add_dependency 'event_emitter', '~> 0.2', '>= 0.2.5'
+  spec.add_dependency 'rspec-expectations', '~> 3.1', '>= 3.1.2'
 end

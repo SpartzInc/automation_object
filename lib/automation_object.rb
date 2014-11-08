@@ -6,6 +6,8 @@ require 'thread'
 require 'colorize'
 require 'awesome_print'
 require 'yaml'
+require 'rspec'
+require 'rspec/expectations'
 
 #Convience methods
 require_relative 'automation_object/hash'
