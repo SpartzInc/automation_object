@@ -69,4 +69,4 @@ screens:
 
 ### Examples
 
-- [Simple](examples/simple)
+- [Simple](examples/simple), simple demonstration on usage
