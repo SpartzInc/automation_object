@@ -69,12 +69,18 @@ screens:
 
 ### Examples
 
-- [Simple simple demonstration on usage](examples/simple)
+- [Simple demonstration](examples/simple)
+  - Small example to get your feet wet
 - [Debugging demonstration](examples/debugging)
-- [Views demonstration](examples/view)
+  - Shows how to use debugging to figure out what might have gone wrong
+- [Views demonstration](examples/views)
+  - Shows how to use views, which help reduce the size of blue prints
 - [Elements demonstration](examples/elements)
+  - Shows the different types of configurations of elements available on how to use them
 - [Hooks demonstration](examples/hooks)
+  - Shows how to include hooks into framework events to create stable tests
 - [iFrames demonstration](examples/iframes)
+  - Shows how to use iframes
 - [Modals demonstration](examples/modals)
 - [Multiple windows demonstration](examples/multiple_windows)
 - [No default screen demonstration](examples/no_default_screen)
