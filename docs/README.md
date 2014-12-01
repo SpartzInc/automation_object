@@ -17,8 +17,9 @@ Code for getting YAML configurations and converting into one single blueprint:
 ```
 require 'automation_object'
 
-#Returns Hash
+#Set base directory so you don't have to specify full folder path each time
 AutomationObject::base_directory = '/base/blue_print/directory'
+#Returns merged Hash
 blue_prints = AutomationObject::BluePrint.new('/path/to/specific/blueprints')
 ```
 
