@@ -1,7 +1,7 @@
 AutomationObject Framework README
 ----
 
-Table of Contents:
+### Table of Contents:
 *    [Putting it together](#putting-it-together)
 *    [Blue Prints](#blue-prints)
 *    [Framework Methods](#framework-methods)
@@ -95,3 +95,6 @@ screens:
 - [Automatic onload modals example](examples/automatic_onload_modals)
   - Shows how to implement automatic onload modals.  This is mainly to get rid of ads or other random modals that may occur on certain
   screens.
+- [Throttle Driver Interactions](examples/throttle_driver_interactions)
+  - If you are having issues with browsers/apps/drivers crashing, then throttling may help stabilize tests.
+  This example will show you how to throttle driver and element interactions
