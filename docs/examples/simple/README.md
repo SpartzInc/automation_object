@@ -6,8 +6,8 @@ cluttering you with too much information.
 ### Installation and Execution
 
 1. cd into this directory
-2. Run command $bundle install
-3. Run command $ruby run.rb
+2. Run command 'bundle install' to install the gems needed
+3. Run command 'ruby run.rb' to run the already script to interact with the UI
 4. Press enter to quit
 
 ### play.rb usage
