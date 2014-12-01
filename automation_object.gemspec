@@ -28,5 +28,4 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'event_emitter', '~> 0.2', '>= 0.2.5'
   spec.add_dependency 'rspec', '~> 3.1.0', '>= 3.1.0'
   spec.add_dependency 'rspec-expectations', '~> 3.1', '>= 3.1.2'
-  spec.add_dependency 'cucumber', '~> 1.3', '>= 1.3.17'
 end

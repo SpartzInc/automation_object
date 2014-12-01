@@ -8,7 +8,6 @@ require 'awesome_print'
 require 'yaml'
 require 'rspec'
 require 'rspec/expectations'
-require 'cucumber'
 require 'securerandom'
 
 #Convience methods
