@@ -21,6 +21,13 @@ a decoupled complete version.  Right now, many of the objects are coupled tightl
 We will try to get a decoupled version out by Jan/Feb 2015.  This gem does work well for our purposes, but I wanted
 to warn you beforehand so I wasn't making empty promises.
 
+Also we will probably hold off on adding large features/changes until the more complete decoupled version is ready.
+
+### Usage
+
+__[Documentation on AutomationObject](docs/README.md)__ contains all examples and usage of the AutomationObject.
+
+
 ### Installation
 
 Add this line to your application's Gemfile:
@@ -34,10 +41,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install automation_object
-
-### Usage
-
-__[Documentation on AutomationObject](docs/README.md)__ contains all examples and usage of the AutomationObject.
 
 ### Contributing
 
