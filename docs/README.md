@@ -69,4 +69,15 @@ screens:
 
 ### Examples
 
-- [Simple](examples/simple), simple demonstration on usage
+- [Simple simple demonstration on usage](examples/simple)
+- [Debugging demonstration](examples/debugging)
+- [Views demonstration](examples/view)
+- [Elements demonstration](examples/elements)
+- [Hooks demonstration](examples/hooks)
+- [iFrames demonstration](examples/iframes)
+- [Modals demonstration](examples/modals)
+- [Multiple windows demonstration](examples/multiple_windows)
+- [No default screen demonstration](examples/no_default_screen)
+- [Automatic screen routing demonstration](examples/automatic_screen_routing)
+- [Automatic screen changes demonstration](examples/automatic_screen_changes)
+- [Automatic onload modals demonstration](examples/automatic_onload_modals)
