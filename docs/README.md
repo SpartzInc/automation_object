@@ -69,29 +69,29 @@ screens:
 
 ### Examples
 
-- [Simple demonstration](examples/simple)
+- [Simple example](examples/simple)
   - Small example to get your feet wet
-- [Debugging demonstration](examples/debugging)
+- [Debugging example](examples/debugging)
   - Shows how to use debugging to figure out what might have gone wrong
-- [Views demonstration](examples/views)
+- [Views example](examples/views)
   - Shows how to use views, which help reduce the size of blue prints
-- [Elements demonstration](examples/elements)
+- [Elements example](examples/elements)
   - Shows the different types of configurations of elements available and how to use them
-- [Hooks demonstration](examples/hooks)
+- [Hooks example](examples/hooks)
   - Shows how to include hooks into framework events to create stable tests
-- [iFrames demonstration](examples/iframes)
+- [iFrames example](examples/iframes)
   - Shows how to implement iframe interactions
-- [Modals demonstration](examples/modals)
+- [Modals example](examples/modals)
   - Shows how to use modals, which can be used for dropdowns and other popups that may occur with interactions
-- [Multiple windows demonstration](examples/multiple_windows)
+- [Multiple windows example](examples/multiple_windows)
   - Demonstrates how multiple windows are handled within the framework
-- [No default screen demonstration](examples/no_default_screen)
+- [No default screen example](examples/no_default_screen)
   - Sometimes sites/apps don't have a default screen.  This shows you how to implement that in blue prints
-- [Automatic screen routing demonstration](examples/automatic_screen_routing)
+- [Automatic screen routing example](examples/automatic_screen_routing)
   - Shows how to use automatic screen routing, which will transfer to screens automatically when calling screens that are not
   currently live.
-- [Automatic screen changes demonstration](examples/automatic_screen_changes)
+- [Automatic screen changes example](examples/automatic_screen_changes)
   - Shows how to implement automatic screen changes and what use cases this may be required
-- [Automatic onload modals demonstration](examples/automatic_onload_modals)
+- [Automatic onload modals example](examples/automatic_onload_modals)
   - Shows how to implement automatic onload modals.  This is mainly to get rid of ads or other random modals that may occur on certain
   screens.
