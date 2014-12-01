@@ -7,7 +7,7 @@ module AutomationObject
                       'size', 'location', 'rel_location', 'send_keys', 'set_value', 'displayed?', 'selected?',
                       'attribute', 'clear', 'attribute', 'click', 'css_value', 'displayed?', 'enabled?',
                       'location', 'location_once_scrolled_into_view', 'ref', 'selected?', 'send_keys',
-                      'size', 'submit', 'tag_name', 'text']
+                      'size', 'submit', 'tag_name', 'text', 'content']
 
       HOOK_KEYS = ['live?', 'before_load', 'accept', 'dismiss', 'scroll_up', 'scroll_down', 'scroll_right', 'scroll_left']
 
@@ -67,7 +67,8 @@ module AutomationObject
           'change_to_previous_screen' => TrueClass,
           'close_modal' => TrueClass,
           'automatic_onload_modals' => Array,
-          'reset_screen' => TrueClass
+          'reset_screen' => TrueClass,
+          'possible_screen_changes' => Array
       }
     end
   end

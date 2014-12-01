@@ -70,11 +70,11 @@ module AutomationObject
       self.instance_variables.each { |instance_variable|
         if instance_variable == instance_symbol
           method_class = self.send(element_symbol).class
-          return (method_class == Element || method_class == ElementHash || method_class == ElementArray)
+          return ([Element, ElementHash, ElementArray, ElementGroup].include?(method_class))
         end
       }
 
-      false
+      return false
     end
 
     def method_missing(method_requested, *args, &block)
@@ -192,6 +192,18 @@ module AutomationObject
       #Set active modal to nil
       self.active_modal = nil
       self.window_handle = nil unless skip_window_handle
+    end
+
+    def get_element_object(element_name)
+      unless self.respond_to?(element_name)
+        raise ArgumentError, "Element (#{element_name}) is not defined in the screen (#{self.screen_name})"
+      end
+
+      unless self.respond_to_element?(element_name)
+        raise ArgumentError, "Expected an element for iframe (#{element_name}) defined in screen (#{self.screen_name})"
+      end
+
+      return self.send(element_name)
     end
   end
 end

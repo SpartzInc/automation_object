@@ -65,21 +65,7 @@ module AutomationObject
         raise ArgumentError, 'Screenshot path must contain .png file extension'
       end
 
-      #Todo: figure out why this is erroring out sometimes
-      #Catch no window error
-      if self.driver_object.respond_to?(:screenshot)
-        begin
-          self.driver_object.screenshot(path)
-        rescue Selenium::WebDriver::Error::NoSuchWindowError
-          puts 'Rescueing'.colorize(:red)
-        end
-      else
-        begin
-          self.driver_object.save_screenshot(path)
-        rescue Selenium::WebDriver::Error::NoSuchWindowError
-          puts 'Rescueing'.colorize(:red)
-        end
-      end
+      return self.driver_object.screenshot(path)
     end
 
     def window_in_iframe?
@@ -109,34 +95,14 @@ module AutomationObject
       iframe_element_name = configuration['in_iframe']
 
       unless iframe_element_name.class == String
-        raise ArgumentError, "Expected String for in_iframe property of element (#{self.element_name}), screen (#{self.screen_name})"
+        raise ArgumentError, "Expected String for in_iframe property of element (#{element_name}), screen (#{self.screen_name})"
       end
 
-      unless self.respond_to?(iframe_element_name)
-        raise ArgumentError, "iFrame element (#{iframe_element_name}) is not defined in the screen (#{self.screen_name}) for element (#{self.element_name})"
-      end
-
-      unless self.respond_to_element?(iframe_element_name)
-        raise ArgumentError, "Expected an element for iframe (#{iframe_element_name}) defined for element (#{self.element_name}) in screen (#{self.screen_name})"
-      end
-
-      iframe_element_object = self.send(iframe_element_name)
-
-      unless self.framework_object.is_mobile?
-        iframe_element_object.scroll_to_view
-      end
-
-      iframe_switch_value = iframe_element_object.attribute('id')
-      if iframe_switch_value.length == 0
-        iframe_switch_value = iframe_element_object.attribute('name')
-      end
-
-      if iframe_switch_value.length == 0
-        raise ArgumentError, "Expecting name or id attribute to switch to iframe in screen #{self.screen_name} element #{iframe_element_name}"
-      end
+      iframe_element_object = self.get_element_object(iframe_element_name)
+      iframe_element_object.scroll_to_view
 
       AutomationObject::Logger::add('Switching from default content to iframe', [self.framework_location])
-      self.driver_object.switch_to.frame(iframe_switch_value)
+      iframe_element_object.switch_to_iframe
       self.in_iframe = iframe_element_name
     end
 

@@ -8,6 +8,8 @@ module AutomationObject
       }
       @@minimum_speed = 0 #0.01
 
+      @@scroll_into_view_methods = [:click, :tap, :hover, :send_keys]
+
       def self.throttle_methods
         @@throttle_methods
       end
@@ -30,13 +32,15 @@ module AutomationObject
       end
 
       def respond_to?(method_symbol, include_private = false)
-        @driver_object.mutex_object.synchronize do
-          return true if super.respond_to?(method_symbol)
-          return @element_object.respond_to?(method_symbol, include_private)
-        end
+        return true if super
+        return @element_object.respond_to?(method_symbol, include_private)
       end
 
       def method_missing(method_symbol, *arguments, &block)
+        if @@scroll_into_view_methods.include?(method_symbol)
+          self.scroll_into_view
+        end
+
         @driver_object.mutex_object.synchronize do
           start_time = Time.new.to_f
           element_object_return = @element_object.send(method_symbol, *arguments, &block)
@@ -86,8 +90,8 @@ module AutomationObject
       end
 
       def get_box_coordinates
-        element_location = @element_object.location
-        element_size = @element_object.size
+        element_location = self.location
+        element_size = self.size
 
         box_coordinates = Hash.new
         box_coordinates[:x1] = element_location.x.to_f
@@ -96,6 +100,143 @@ module AutomationObject
         box_coordinates[:y2] = element_location.y.to_f + element_size.height.to_f
 
         return box_coordinates
+      end
+
+      def attribute(key, value = false)
+        @driver_object.mutex_object.synchronize do
+          return @element_object.attribute(key) unless value
+        end
+
+        script = "return arguments[0].#{key} = '#{value}'"
+        @driver_object.execute_script(script, @element_object)
+
+        @driver_object.mutex_object.synchronize do
+          return @element_object.attribute(key)
+        end
+      end
+
+      def switch_to_iframe
+        @driver_object.switch_to.frame(self.get_iframe_switch_value)
+      end
+
+      def get_iframe_switch_value
+        iframe_switch_value = self.attribute('id')
+        if iframe_switch_value.length == 0
+          iframe_switch_value = self.attribute('name')
+        end
+
+        unless iframe_switch_value
+          iframe_switch_value = self.attribute('name', SecureRandom.hex(16))
+        end
+
+        return iframe_switch_value
+      end
+
+      def get_element_center
+        element_location = self.location
+        element_size = self.size
+
+        center = Hash.new
+        center[:x] = (element_location.x.to_f + element_size.width.to_f/2).to_f
+        center[:y] = (element_location.y.to_f + element_size.height.to_f/2).to_f
+
+        return center
+      end
+
+      def x
+        return self.location.x
+      end
+
+      def y
+        return self.location.y
+      end
+
+      def width
+        return self.size.width
+      end
+
+      def height
+        return self.size.height
+      end
+
+      def hover
+        self.scroll_into_view
+        @driver_object.action.move_to(@element_object).perform
+      end
+
+      def visible?
+        return self.displayed?
+      end
+
+      def invisible?
+        return self.displayed? ? false : true
+      end
+
+      def id
+        return self.attribute('id').to_s
+      end
+
+      def href
+        return self.attribute('href').to_s
+      end
+
+      def content
+        return self.attribute('content').to_s
+      end
+
+      def scroll_into_view
+        return self.scroll_to_view
+      end
+
+      def scroll_to_view
+        self.location_once_scrolled_into_view
+
+        if @driver_object.is_mobile?
+          return unless @driver_object.is_browser?
+
+          element_center = self.get_element_center
+          window_height = @driver_object.execute_script('return window.innerHeight;').to_f
+          current_y_position = @driver_object.execute_script('var doc = document.documentElement; return (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);').to_f
+
+          if element_center[:y] < (window_height/2)
+            ideal_y_position = (current_y_position + element_center[:y] - (window_height.to_f / 2.0)).abs
+          else
+            ideal_y_position = (current_y_position - element_center[:y] + (window_height.to_f / 2.0)).abs
+          end
+
+          @driver_object.execute_script("window.scroll(#{element_center[:x].to_f},#{ideal_y_position});")
+          #Just in case in close to the top or bottom bounds of the window
+          element_location = self.location_once_scrolled_into_view
+
+          if element_location[:y] < 0
+            current_y_position = @driver_object.execute_script('var doc = document.documentElement; return (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);').to_f
+            scroll_y_position = current_y_position + element_location[:y]
+            @driver_object.execute_script("window.scroll(#{element_location[:x].to_f},#{scroll_y_position});")
+          end
+        else
+          element_location = self.location
+
+          window_height = @driver_object.execute_script('return window.innerHeight;').to_f
+          current_scroll_position = @driver_object.execute_script('var doc = document.documentElement; return (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);').to_f
+
+          middle_y_bounds = current_scroll_position + window_height/2
+
+          if middle_y_bounds > element_location.y
+            #Add
+            y_difference = middle_y_bounds - element_location.y
+            scroll_y_position = current_scroll_position - y_difference
+          else
+            #Subtract
+            y_difference = element_location.y - middle_y_bounds
+            scroll_y_position = current_scroll_position + y_difference
+          end
+
+          #Get the element to halfway
+          scroll_x_position = element_location.x.to_f
+
+          javascript_string = "return window.scroll(#{scroll_x_position}, #{scroll_y_position});"
+          @driver_object.execute_script(javascript_string)
+        end
       end
     end
   end

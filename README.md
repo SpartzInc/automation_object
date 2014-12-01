@@ -14,6 +14,13 @@ a DSL framework to interact with the website or app.
 3. Use DSL framework to control UI interactions
 4. Ability to version UI representation for DRY UI test development
 
+### Fair Warning
+
+This project is still very much a work in progress.  I wanted to get a proof of concept in first before writing
+a decoupled complete version.  Right now, many of the objects are coupled tightly which can have some unforeseen issues.
+We will try to get a decoupled version out by Jan/Feb 2015.  This gem does work well for our purposes, but I wanted
+to warn you beforehand so I wasn't making empty promises.
+
 ### Installation
 
 Add this line to your application's Gemfile:
@@ -39,8 +46,3 @@ __[Documentation on AutomationObject](docs/README.md)__ contains all examples an
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
-
-### Fair Warning
-
-This is still a work in progress and there is a lot of coupling between objects at this point.  The framework
-does work very well but might not be perfect yet.

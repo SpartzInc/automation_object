@@ -8,6 +8,8 @@ require 'awesome_print'
 require 'yaml'
 require 'rspec'
 require 'rspec/expectations'
+require 'cucumber'
+require 'securerandom'
 
 #Convience methods
 require_relative 'automation_object/hash'
@@ -38,12 +40,12 @@ require_relative 'automation_object/blue_print_validation/validation_object'
 require_relative 'automation_object/blue_print'
 
 #Framework Object
-require_relative 'automation_object/framework_helpers'
-require_relative 'automation_object/framework_window_helpers'
-require_relative 'automation_object/framework_print_objects'
-require_relative 'automation_object/framework_screen_routing'
-require_relative 'automation_object/framework_screen_monitor'
-require_relative 'automation_object/framework_events'
+require_relative 'automation_object/framework/helpers'
+require_relative 'automation_object/framework/window_helpers'
+require_relative 'automation_object/framework/print_objects'
+require_relative 'automation_object/framework/screen_routing'
+require_relative 'automation_object/framework/screen_monitor'
+require_relative 'automation_object/framework/events'
 require_relative 'automation_object/framework'
 
 #Screen/Modal Objects

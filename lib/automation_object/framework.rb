@@ -107,7 +107,11 @@ module AutomationObject
           self.route_to_screen(self.current_screen_class, screen_class_symbol)
           routed = true
           break
-        rescue
+        rescue Exception => e
+          puts "Unable to route under #{self.current_screen_class} and #{screen_class_symbol}".colorize(:red)
+          ap e
+          ap e.message
+          ap e.backtrace
           # ignored
         end
       }
@@ -219,6 +223,10 @@ module AutomationObject
           this.change_screen_listener(args[:screen_class_symbol], args[:created_window_handle])
         end
 
+        self.send(screen_class_symbol).on :possible_screen_changes do |args|
+          this.possible_change_screen_listener(args[:possible_screens], args[:created_window_handle])
+        end
+
         self.send(screen_class_symbol).on :close_window do |args|
           this.close_window(args[:screen_name], args[:skip_close])
         end
@@ -315,6 +323,32 @@ module AutomationObject
 
         raise message
       end
+    end
+
+    def possible_change_screen_listener(possible_screens, created_window_handle = false)
+      AutomationObject::Logger::add("Going to try to change to possible screens #{possible_screens}")
+
+      set_new_screen = false
+
+      possible_screens.each { |possible_screen_name|
+        possible_screen_symbol = self.translate_string_to_class(possible_screen_name)
+
+        begin
+          self.set_current_screen(possible_screen_symbol, created_window_handle)
+
+          if self.current_screen?(possible_screen_name)
+            set_new_screen = true
+            break #It worked, screen changed
+          end
+        rescue
+          #Unable to set current screen, don't do much
+        end
+      }
+
+      return if set_new_screen
+
+      #Raise message since unable to change to any of the screens
+      raise "Unable to change to any of the possible screens #{possible_screens}"
     end
 
     def set_current_screen_multiple(screen_class_symbol, new_window = false)

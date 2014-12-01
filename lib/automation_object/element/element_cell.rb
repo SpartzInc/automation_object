@@ -3,7 +3,7 @@ module AutomationObject
     include EventEmitter
 
     attr_accessor :framework_object, :screen_object, :driver_object, :configuration, :screen_name, :element_name,
-                  :sub_elements
+                  :sub_elements, :element_object
 
     def initialize(params)
       #Set params to properties
@@ -36,7 +36,7 @@ module AutomationObject
         setter = "#{element_class_name}="
         self.class.send(:attr_accessor, element_class_name) unless self.respond_to?(setter)
 
-        element_object_options = {
+        sub_element_object_options = {
             :framework_object => self.framework_object,
             :screen_object => self.screen_object,
             :driver_object => self.driver_object,
@@ -45,7 +45,7 @@ module AutomationObject
             :element_name => element_name
         }
 
-        send setter, AutomationObject::Element.new(element_object_options)
+        send setter, AutomationObject::Element.new(sub_element_object_options)
 
         this = self
         self.send(element_class_name).on :hook do |args|
@@ -54,6 +54,23 @@ module AutomationObject
 
         self.sub_elements.push(sub_element_name)
       }
+
+      #Add Element Object
+      sub_element_object_options = {
+          :framework_object => self.framework_object,
+          :screen_object => self.screen_object,
+          :driver_object => self.driver_object,
+          :blue_prints => self.configuration,
+          :screen_name => self.screen_name,
+          :element_name => self.element_name,
+          :element_object => params[:element_object]
+      }
+
+      self.element_object = AutomationObject::Element.new(sub_element_object_options)
+      this = self
+      self.element_object.on :hook do |args|
+        this.emit :hook, args
+      end
     end
 
     def combine_selector_path(cell_configuration, sub_element_configuration)
@@ -82,17 +99,28 @@ module AutomationObject
       }
 
       #If not then do the super on the method_symbol
-      super.respond_to?(method_symbol, include_private)
+      return true if super.respond_to?(method_symbol, include_private)
+
+      #If not try element object
+      return self.element_object.respond_to?(method_symbol, include_private)
+    end
+
+    def element_respond_to?(method_symbol, include_private = false)
+      return self.element_object.respond_to?(method_symbol, include_private)
     end
 
     def method_missing(method_requested, *args, &block)
       class_symbol = self.translate_string_to_class(method_requested)
 
-      unless self.respond_to?(class_symbol)
-        raise "Element (#{method_requested}) is not defined in ElementCell object"
+      if self.element_respond_to?(method_requested)
+        return self.element_object.send(method_requested, *args, &block)
       end
 
-      self.send(class_symbol, *args, &block)
+      if self.respond_to?(class_symbol)
+        return self.send(class_symbol, *args, &block)
+      end
+
+      raise "Element (#{method_requested}) is not defined in ElementCell object"
     end
   end
 end

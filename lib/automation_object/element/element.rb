@@ -47,9 +47,7 @@ module AutomationObject
 
     def respond_to?(method_symbol, include_private = false)
       #If this Element class has the method then return true
-      if super.respond_to?(method_symbol, include_private)
-        return true
-      end
+      return true if super
 
       #Check ElementMethods respond_to?, need to wrap in driver mutex object
       return self.element_methods_object.respond_to?(method_symbol, include_private)
@@ -92,22 +90,26 @@ module AutomationObject
         before_window_handles = self.framework_object.get_window_handles
       end
 
-      #Use automation object level mutex object which will lock any element operations will complete
+
       begin
-        AutomationObject::Logger::add("Executing method #{method_symbol} on element", [self.framework_location])
-        em_object_return = self.element_methods_object.send(method_symbol, *arguments, &block)
-      rescue Selenium::WebDriver::Error::ElementNotVisibleError, Selenium::WebDriver::Error::UnknownError => e
-        raise e
-      rescue Selenium::WebDriver::Error::StaleElementReferenceError
-        sleep(2)
-        AutomationObject::Logger::add("Stale element error, retrying method #{method_symbol} on element", [self.framework_location])
-        self.element_methods_object.find_element
-        em_object_return = self.element_methods_object.send(method_symbol, *arguments, &block)
-      rescue Selenium::WebDriver::Error::InvalidElementStateError
-        sleep(2)
-        AutomationObject::Logger::add("Invalid element state error, retrying method #{method_symbol} on element", [self.framework_location])
-        self.element_methods_object.find_element
-        em_object_return = self.element_methods_object.send(method_symbol, *arguments, &block)
+        #Use automation object level mutex object which will lock any element operations will complete
+        begin
+          AutomationObject::Logger::add("Executing method #{method_symbol} on element", [self.framework_location])
+          em_object_return = self.element_methods_object.send(method_symbol, *arguments, &block)
+        rescue Selenium::WebDriver::Error::ElementNotVisibleError, Selenium::WebDriver::Error::UnknownError => e
+          raise e
+        rescue Selenium::WebDriver::Error::StaleElementReferenceError
+          sleep(2)
+          AutomationObject::Logger::add("Stale element error, retrying method #{method_symbol} on element", [self.framework_location])
+          em_object_return = self.element_methods_object.send(method_symbol, *arguments, &block)
+        rescue Selenium::WebDriver::Error::InvalidElementStateError
+          sleep(2)
+          AutomationObject::Logger::add("Invalid element state error, retrying method #{method_symbol} on element", [self.framework_location])
+          self.element_methods_object.find_element
+          em_object_return = self.element_methods_object.send(method_symbol, *arguments, &block)
+        end
+      rescue
+        raise $!, "#{self.framework_location} #{$!}", $!.backtrace
       end
 
       if self.check_new_window?(method_symbol)

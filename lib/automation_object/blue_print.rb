@@ -59,20 +59,26 @@ module AutomationObject
         next if item == '.' or item == '..'
         next if item[0] == '.'
 
-        file = File.join(path, "#{item}")
-        if File.directory?(file)
+        file_path = File.join(path, "#{item}")
+        if File.directory?(file_path)
           depth = depth + 1
           self.merge_directory("#{path}/#{item}", depth) #call this method again for the subdirectory
           next
         end
 
-        file_configuration = YAML.load_file(file)
+        next unless self.is_yaml_file?(file_path)
+
+        file_configuration = YAML.load_file(file_path)
         @configuration = @configuration.deep_merge(file_configuration) if file_configuration.class == Hash
       end
 
       @configuration.each { |key, value|
         self[key] = value
       }
+    end
+
+    def is_yaml_file?(file_path)
+      return (file_path.match(/\.ya?ml$/)) ? true : false
     end
 
     def merge_views

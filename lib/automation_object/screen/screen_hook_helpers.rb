@@ -35,6 +35,15 @@ module AutomationObject
                 :screen_class_symbol => screen_class_symbol,
                 :created_window_handle => created_window_handle
             }
+          when 'possible_screen_changes'
+            unless value.is_a?(Array)
+              raise ArgumentError, "Expected possible_screen_changes to be an Array in screen (#{self.screen_name})"
+            end
+
+            self.emit :possible_screen_changes, {
+                :possible_screens => value,
+                :created_window_handle => created_window_handle
+            }
           when 'sleep'
             sleep(value.to_f)
           when 'wait_for_elements'

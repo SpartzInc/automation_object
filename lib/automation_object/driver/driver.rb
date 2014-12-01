@@ -5,18 +5,19 @@ module AutomationObject
       @@anonymous_skip_classes = [TrueClass, FalseClass, String, Numeric, Array, Hash]
       attr_accessor :mutex_object
 
+      attr_accessor :is_browser, :is_mobile, :supports_contexts
+
       @@throttle_methods = {
-          'navigate' => 2, #Appears the navigate to returns before url is even done
-          'close' => 1
-          #'find_element' => 0.1, #Connection refused event
-          #'find_elements' => 0.1,
-          #'exists?' => 0.05,
-          #'switch_to' => 0.5,
-          #'set_context' => 0.5,
-          #'manage' => 0.5
+          'navigate' => 2,
+          'close' => 2,
+          'manage' => 1
       }
 
       @@minimum_speed = 0 #0.01 #Speed it up to see where faults may lay
+
+      @@implicit_wait_timeout = 30
+      @@script_timeout = 500
+      @@page_load_timeout = 500
 
       def self.throttle_methods
         @@throttle_methods
@@ -37,11 +38,19 @@ module AutomationObject
       def initialize(driver_object)
         @driver_object = driver_object
         self.mutex_object = Mutex.new
+
+        return if self.is_mobile?
+
+        self.mutex_object.synchronize do
+          @driver_object.manage.timeouts.implicit_wait = @@implicit_wait_timeout
+          @driver_object.manage.timeouts.script_timeout = @@script_timeout
+          @driver_object.manage.timeouts.page_load = @@page_load_timeout
+        end
       end
 
       def respond_to?(method_symbol, include_private = false)
         self.mutex_object.synchronize do
-          return true if super.respond_to?(method_symbol)
+          return true if super
           return @driver_object.respond_to?(method_symbol, include_private)
         end
       end
@@ -83,8 +92,9 @@ module AutomationObject
             exists = @driver_object.exists { @driver_object.find_element(selector_type, selector_path) }
           else
             begin
+              @driver_object.manage.timeouts.implicit_wait = 0
               element_objects = @driver_object.find_elements(selector_type, selector_path)
-
+              @driver_object.manage.timeouts.implicit_wait = @@implicit_wait_timeout
               if element_objects.length == 0
                 exists = false
               else
@@ -154,6 +164,117 @@ module AutomationObject
         if time_difference < throttle_time_minimum
           sleep((throttle_time_minimum-time_difference))
         end
+      end
+
+      def screenshot(path)
+        start_time = Time.new.to_f
+
+        if self.driver_object.respond_to?(:screenshot)
+          driver_return = self.driver_object.screenshot(path)
+        else
+          driver_return = self.driver_object.save_screenshot(path)
+        end
+
+        self.throttle_speed(:find_elements, start_time)
+
+        total_time_taken = (Time.new.to_f-start_time)
+        AutomationObject::Logger::add_driver_message(total_time_taken, caller_locations, :screenshot, [path])
+
+        return driver_return
+      end
+
+      def accept_prompt
+        start_time = Time.new.to_f
+
+        if self.driver_object.respond_to?(:alert_accept)
+          self.driver_object.alert_accept
+        else
+          alert = self.driver_object.switch_to.alert
+          alert.accept
+        end
+
+        self.throttle_speed(:accept_prompt, start_time)
+        return nil
+      end
+
+      def dismiss_prompt
+        start_time = Time.new.to_f
+
+        begin
+          @driver_object.alert_dismiss
+        rescue NoMethodError
+          alert = @driver_object.switch_to.alert
+          alert.dismiss
+          @driver_object.switch_to.default_content
+        end
+
+        self.throttle_speed(:dismiss_prompt, start_time)
+        return nil
+      end
+
+      def is_mobile?
+        if self.is_mobile == nil
+          self.is_mobile = self.supports_contexts?
+        end
+
+        return self.is_mobile
+      end
+
+      def is_browser?
+        unless self.is_browser == nil
+          return self.is_browser
+        end
+
+        #If Selenium the yeah we are using a browser
+        if self.supports_window_handles?
+          self.is_browser = true
+          return self.is_browser
+        end
+
+        #Now we need to check Appium's contexts to see if WEBVIEW is in available_contexts
+        available_contexts = nil
+        self.mutex_object.synchronize do
+          available_contexts = @driver_object.available_contexts
+        end
+        self.supports_contexts = true
+
+        available_contexts.each { |context|
+          if context.match(/^WEBVIEW_\d+$/)
+            self.is_browser = true
+            return self.is_browser
+          end
+        }
+
+        self.is_browser = false
+        return self.is_browser
+      end
+
+      #Selenium's use of window_handles
+      def supports_window_handles?
+        begin
+          self.mutex_object.synchronize do
+            @driver_object.window_handles
+          end
+          return true
+        rescue NoMethodError, Selenium::WebDriver::Error::UnknownError
+          return false
+        end
+      end
+
+      #Appium's use of window_handles
+      def supports_contexts?
+        return self.supports_contexts if self.supports_contexts != nil
+
+        self.mutex_object.synchronize do
+          begin
+            @driver_object.available_contexts
+            self.supports_contexts = true
+          rescue NoMethodError
+            self.supports_contexts = false
+          end
+        end
+
+        return self.supports_contexts
       end
     end
   end
