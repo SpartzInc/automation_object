@@ -30,4 +30,23 @@ base_url: 'http://www.google.com'
 ```
 ---
 
+#### default_screen:
 
+__Expecting__: String
+
+__Requirements__: Expecting existing screen defined in the blue prints
+
+__Description__:
+
+Use if your automation always starts on one screen.  If the initial screen can be different, then don't define
+and use live? configurations in screens and the automation framework will figure out which screen you are initially
+on.
+
+__Example__:
+```
+default_screen: 'home_screen'
+screens:
+  home_screen:
+  list_screen:
+```
+---
