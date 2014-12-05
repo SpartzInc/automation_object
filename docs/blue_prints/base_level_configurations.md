@@ -14,7 +14,7 @@ This document will cover the available keys and values that may be used at the b
 
 ***
 
-#### base_url:
+### base_url:
 
 __Expecting__: String
 
@@ -30,7 +30,7 @@ base_url: 'http://www.google.com'
 ```
 ---
 
-#### default_screen:
+### default_screen:
 
 __Expecting__: String
 
@@ -75,7 +75,7 @@ screens:
 ```
 ---
 
-#### screens:
+### screens:
 
 __Expecting__: Hash
 
@@ -101,7 +101,7 @@ screens:
 ```
 ---
 
-#### screen_transition_sleep:
+### screen_transition_sleep:
 
 __Expecting__: Numeric
 
@@ -123,7 +123,7 @@ screens:
 ```
 ---
 
-#### throttle_driver_methods:
+### throttle_driver_methods:
 
 __Expecting__: Hash
 
@@ -134,7 +134,18 @@ __Example__:
 ```
 ---
 
-#### throttle_element_methods:
+### throttle_element_methods:
+
+__Expecting__: Hash
+
+__Description__:
+
+__Example__:
+```
+```
+---
+
+### views:
 
 __Expecting__: Hash
 
