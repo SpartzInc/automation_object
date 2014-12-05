@@ -14,26 +14,20 @@ This document will cover the available keys and values that may be used at the b
 
 ***
 
-#### element_name:
+#### base_url:
 
-__Class__: String
+__Expecting__: String
+
+__Requirements__: Expecting web broser for Appium or Selenium, if app it will error out
 
 __Description__:
 
-Should match up to an element defined in the same screen.
+Base url of the website you want to automate
 
 __Example__:
 ```
-screens:
-  home_screen:
-    before_load:
-      - element_name: 'example_button'
-        exists?: true
-    elements:
-      example_button:
-        xpath: '//xpath'
+base_url: 'http://www.google.com'
 ```
-
 ---
 
 
