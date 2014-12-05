@@ -64,7 +64,12 @@ screens:
 
 
 ### Blue Prints
-
+- [Base Level Configurations](blue_prints/base_level_configurations.md)
+  - Available base level configurations for blue prints
+- [Screen Level Keys](blue_prints/screen_level_configurations.md)
+  - Available screen level configurations for blue prints
+- [Element Level Keys](blue_prints/element_level_keys.md)
+  - Available element level configurations for blue prints
 ### Framework Methods
 
 ### Examples
