@@ -34,7 +34,7 @@ base_url: 'http://www.google.com'
 
 __Expecting__: String
 
-__Requirements__: Expecting existing screen defined in the blue prints
+__Requirements__: Expecting string defined to be a screen defined under screens
 
 __Description__:
 
@@ -48,5 +48,99 @@ default_screen: 'home_screen'
 screens:
   home_screen:
   list_screen:
+```
+
+__Example without Default Screen__:
+```
+base_url: 'http://www.google.com'
+screens:
+  home_screen:
+    live?:
+      elements:
+        - element_name: 'title_text'
+          exists?: true
+          text: 'Home Screen'
+    elements:
+      title_text:
+        css: '#title_text'
+  list_screen:
+    live?:
+      elements:
+        - element_name: 'title_text'
+          exists?: true
+          text: 'List Screen'
+    elements:
+      title_text:
+        xpath: '//*[@id="title_text"]'
+```
+---
+
+#### screens:
+
+__Expecting__: Hash
+
+__Description__:
+
+This hash will contain all the defined screens that you with to automate.
+
+__Example__:
+```
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+screens:
+  home_screen:
+    elements:
+      search_button:
+        css: '#search_button'
+  search_screen:
+    elements:
+      title_text:
+        css: '#title_text'
+  #Add so on
+  #Also it is advantageous to split up YAML files by screen to help keep a maintainable configuration.
+```
+---
+
+#### screen_transition_sleep:
+
+__Expecting__: Numeric
+
+__Default__: 0
+
+__Description__:
+
+Can be used to help build automation at the beginning by adding a sleep every time you change a screen.
+When no waiting hooks exist this will help keep the automation from breaking or raising errors.
+
+__Example__:
+```
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+screen_transition_sleep: 1
+screens:
+  home_screen:
+  search_screen:
+```
+---
+
+#### throttle_driver_methods:
+
+__Expecting__: Hash
+
+__Description__:
+
+__Example__:
+```
+```
+---
+
+#### throttle_element_methods:
+
+__Expecting__: Hash
+
+__Description__:
+
+__Example__:
+```
 ```
 ---
