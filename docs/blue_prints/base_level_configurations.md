@@ -127,10 +127,20 @@ screens:
 
 __Expecting__: Hash
 
-__Description__:
+__Description__: If you are having issues when interacting with the driver too quickly, you can throttle driver
+methods via this configuration.  Then each method that is called will at the minimum take the time you define before
+returning.  Time is defined in seconds
 
 __Example__:
 ```
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+throttle_driver_methods:
+  find_element: 5 #In Seconds
+  manage: 4
+  execute_script: 6.6
+  switch_to: 2
+  exists?: 3.2
 ```
 ---
 
@@ -138,10 +148,20 @@ __Example__:
 
 __Expecting__: Hash
 
-__Description__:
+__Description__: If you are having issues when interacting with elements too quickly, you can throttle elements
+methods via this configuration.  Then each method that is called will at the minimum take the time you define before
+returning.  Time is defined in seconds
 
 __Example__:
 ```
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+throttle_element_methods:
+  click: 5 #In Seconds
+  send_keys: 4
+  submit: 6.6
+  location: 2
+  size: 3.2
 ```
 ---
 
@@ -149,9 +169,27 @@ __Example__:
 
 __Expecting__: Hash
 
-__Description__:
+__Description__: Use views when you have common elements between screens.  This can help keep your configurations DRY
+and not have to repeat yourself throughout each YAML file.  Views will have all the same configurations available as
+[screens](screen_level_configurations.md).
 
 __Example__:
 ```
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+views:
+  common_elements_view:
+    elements:
+      title:
+        css: 'h1#title'
+      description:
+        css: 'p#description'
+screens:
+  home_screen:
+    included_views:
+      - 'common_elements_view'
+  search_screen:
+    included_views:
+      - 'common_elements_view'
 ```
 ---
