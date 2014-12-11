@@ -5,14 +5,14 @@ This document will cover the available keys and values that may be used at the b
 
 ### Table of Contents:
 
-*    [css](#base_url)
-*    [custom_methods](#base_url)
-*    [custom_range](#base_url)
-*    [define_elements_by](#base_url)
-*    [in_iframe](#base_url)
-*    [multiple](#base_url)
-*    [remove_duplicates](#base_url)
-*    [xpath](#base_url)
+*    [css](#css)
+*    [custom_methods](#custom_methods)
+*    [custom_range](#custom_range)
+*    [define_elements_by](#define_elements_by)
+*    [in_iframe](#in_iframe)
+*    [multiple](#multiple)
+*    [remove_duplicates](#remove_duplicates)
+*    [xpath](#xpath)
 
 ***
 
