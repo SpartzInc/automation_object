@@ -1,7 +1,7 @@
 Base Level Configurations
 ----
 
-This document will cover the available keys and values that may be used at the base level.
+This document will cover the available keys and values that may be used at the base YAML or Hash level.
 
 ### Table of Contents:
 *    [base_url](#base_url)
@@ -18,7 +18,7 @@ This document will cover the available keys and values that may be used at the b
 
 __Expecting__: String
 
-__Requirements__: Expecting web broser for Appium or Selenium, if app it will error out
+__Requirements__: Expecting web browser for either Appium or Selenium, if app it will error out
 
 __Description__:
 
@@ -34,7 +34,8 @@ base_url: 'http://www.google.com'
 
 __Expecting__: String
 
-__Requirements__: Expecting string defined to be a screen defined under screens
+__Requirements__: Expecting string defined to be a screen defined under screens. Should always be the initial screen
+when starting AutomationObject::Framework
 
 __Description__:
 
@@ -109,8 +110,9 @@ __Default__: 0
 
 __Description__:
 
-Can be used to help build automation at the beginning by adding a sleep every time you change a screen.
-When no waiting hooks exist this will help keep the automation from breaking or raising errors.
+Can be used to help build automation configurations at the beginning by adding a sleep every time you change a screen.
+When no waiting hooks exist this will help keep the automation from breaking or raising errors.  Try to use hooks
+to make your automation less brittle and faster.
 
 __Example__:
 ```
