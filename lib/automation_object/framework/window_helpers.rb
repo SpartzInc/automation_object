@@ -71,6 +71,7 @@ module AutomationObject
       AutomationObject::Logger::add('Waiting for window to load via document.readyState')
       loops = 0
 
+      sleep(2)
       until self.document_complete?
         loops += 1
 
