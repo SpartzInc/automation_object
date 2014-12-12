@@ -184,12 +184,31 @@ __Expecting__: TrueClass
 
 __Requirements__: Only expects true otherwise don't define in hook.
 
-__Description__:
+__Description__: Use this when you expect an action to close a modal.
 
 __Example__:
 ```
 base_url: 'http://www.google.com'
 default_screen: 'home_screen'
+screens:
+  home_screen:
+    modals:
+      login_modal:
+        username_field:
+          css: '#username'
+        password_field:
+          css: '#password'
+          #Changing up the click event for submit, ie automation_object.home_screen.password_field.submit
+          #Can bind to any element methods
+          submit:
+            after:
+              close_modal: true
+    elements:
+      login_button:
+        css: '#login_button'
+        click:
+          after:
+            show_modal: 'login_modal'
 ```
 
 ### close_window:
@@ -208,58 +227,113 @@ base_url: 'http://www.google.com'
 default_screen: 'home_screen'
 screens:
   home_screen:
-    new_window_button:
-      click:
-        after:
-          wait_for_new_window: true
-          change_screen: 'new_window_screen'
+    elements:
+      new_window_button:
+        click:
+          after:
+            wait_for_new_window: true
+            change_screen: 'new_window_screen'
   new_window_screen:
-    close_window_button:
-      click:
-        after:
-          close_window: true
+    elements:
+      close_window_button:
+        click:
+          after:
+            close_window: true
 ```
 
 ### possible_screen_changes:
 
 __Expecting__: Array
 
-__Requirements__:
+__Requirements__: Expects an Array of defined screens which an action might lead to.
 
-__Description__:
+__Description__:  Use this when trying to test multiple paths (happy/unhappy) such as login forms when
+typing in the wrong username/password combination.
 
 __Example__:
 ```
 base_url: 'http://www.google.com'
-default_screen: 'home_screen'
+default_screen: 'login_screen'
+screens:
+  login_screen:
+    elements:
+      username_field:
+        css: '#username'
+      password_field:
+        xpath: '//input[@type="password"]'
+        submit:
+          after:
+            possible_screen_changes:
+              - 'login_screen'
+              - 'logged_in_screen'
+  logged_in_screen:
+  #And so on
 ```
 
 ### show_modal:
 
 __Expecting__: String
 
-__Requirements__:
+__Requirements__: Expects a value to be a defined modal within the same screen.
 
-__Description__:
+__Description__:  Use when you expect an action to show a modal.
 
 __Example__:
 ```
 base_url: 'http://www.google.com'
 default_screen: 'home_screen'
+screens:
+  home_screen:
+    modals:
+      login_modal:
+        before_load:
+          wait_for_elements:
+            - element_name: 'username_field'
+              exists?: true
+              visible?: true
+        elements:
+          username_field:
+            css: '#username'
+          password_field:
+            css: '#pass'
+    elements:
+      login_button:
+        click:
+          after:
+            show_modal: 'login_modal'
 ```
 
 ### sleep:
 
 __Expecting__: Numeric
 
-__Requirements__:
+__Requirements__: For use only when necessary or when starting out.  Makes tests more brittle than using hooks
+to transfer between screens, elements, etc...
 
-__Description__:
+__Description__:  Will sleep for a period of time when defined in a hook before continuing the hook.
 
 __Example__:
 ```
 base_url: 'http://www.google.com'
 default_screen: 'home_screen'
+screens:
+  home_screen:
+    before_load:
+      sleep: 1
+    live?: #Need to define elements for live, checks to make sure screen is actually live
+      before:
+        sleep: 4
+      elements:
+        - element_name: 'login_button'
+          exists?: true
+    elements:
+      login_button:
+        css: '#login_button'
+        click:
+          before:
+            sleep: 1
+          after:
+            sleep: 5
 ```
 
 ### reset_screen:
