@@ -47,29 +47,92 @@ new_window_screen:
 __Expecting__: Array
 
 __Requirements__: For use only in before_load under screens.  Will check for any modals that might automatically appear.
+
+Also modals must have live? configurations defined underneath them so the framework can figure out whether or not they are
+appearing.
+
+__Description__:
+
 Only really use this for ads that might pop up on the site I am trying to automate.  Either include the action close or
 the modal will be active when you get the screen returned to you.
 
-__Description__:
+Only has one possible action 'close'.  Don't really have any other purpose then to close it automatically.  Might add
+more to this in the future but can't really think of any other implementations.
 
 __Example__:
 ```
 base_url: 'http://www.google.com'
 default_screen: 'home_screen'
+screens:
+  home_screen:
+    automatic_onload_modals: #Will also check if modals are alive in the order you put them in here
+      - modal_name: 'stupid_ad_modal'
+        number_of_checks: 1 #Check if its live? once only
+        action: 'close'
+      - modal_name: 'second_stupid_ad_modal'
+        number_of_checks: 2
+        action: 'close'
+    modals:
+      stupid_ad_modal:
+        live?:
+          elements:
+            - element_name: 'modal_div'
+              exists?: true
+              visible?: true
+            - element_name: 'close_button'
+              exists?: true
+              visible?: true
+        elements:
+          modal_div:
+            css: '#modal_ad_div'
+          close_button:
+            css: '#modal_ad_div #close_button'
+      second_stupid_ad_modal:
+        live?:
+          elements:
+            - element_name: 'modal_div'
+              exists?: true
+              visible?: true
+        elements:
+          modal_div:
+            css: '#second_modal_ad_div'
+          close_button:
+            css: '#second_modal_ad_div #close_button'
 ```
 
 ### change_screen:
 
 __Expecting__: String
 
-__Requirements__:
+__Requirements__:  Value is a screen that is defined in the blue prints.
 
-__Description__:
+__Description__:  Use this when a given action will change the screen or add a screen in case it opens a new window.
+This is pretty much how you link everything in your automation together.
 
 __Example__:
 ```
 base_url: 'http://www.google.com'
 default_screen: 'home_screen'
+screens:
+  home_screen:
+    new_window_button:
+      css: '#new_window_button'
+      click:
+        after:
+          wait_for_new_window: true
+          change_screen: 'new_window_screen'
+    list_links:
+      xpath: '//a'
+      multiple: true
+      click:
+        after:
+          change_screen: 'list_screen'
+  list_screen:
+     elements:
+       #And so on
+  new_window_screen:
+     elements:
+       #And so on
 ```
 
 ### change_to_previous_screen:
@@ -78,12 +141,41 @@ __Expecting__: TrueClass
 
 __Requirements__: Only expects true otherwise don't define in hook.
 
-__Description__:
+__Description__:  You can use this when you know a certain action will cause the screen to change to the previous
+but the previous screen may be variable.
 
-__Example__:
+This will probably come up more in apps then it will on the web (i.e. hamburger menu screen).
+
+__Example (App example, no base url, only xpaths)__:
 ```
-base_url: 'http://www.google.com'
 default_screen: 'home_screen'
+screens:
+  home_screen:
+    elements:
+      menu_button:
+        xpath: '//UIAApplication[1]/UIAWindow[2]/UIAButton[@name="menu_button"]'
+        click:
+          after:
+            change_screen: 'menu_screen'
+      list_buttons:
+        css: '//UIAApplication[1]/UIAWindow[2]/UIATableView[1]/UIATableGroup[1]/UIAButton'
+        click:
+          after:
+            change_screen: 'list_screen'
+  list_screen:
+    elements:
+      menu_button:
+        xpath: '//UIAApplication[1]/UIAWindow[2]/UIAButton[@name="menu_button"]'
+        click:
+          after:
+            change_screen: 'menu_screen'
+  menu_screen:
+    elements:
+      menu_button:
+        xpath: '//UIAApplication[1]/UIAWindow[2]/UIAButton[@name="menu_button"]'
+        click:
+          after:
+            change_to_previous_screen: true
 ```
 
 ### close_modal:
@@ -107,7 +199,8 @@ __Expecting__: TrueClass
 __Requirements__: Only expects true otherwise don't define in hook.  Only can be used for web automation, not apps.
 Since apps do not have multiple windows, framework will not worry about window handles.
 
-__Description__:
+__Description__:  Use this when you expect an action to close a window.  Framework will wait for the window handles
+to decrease by one and remove the screen from being active.
 
 __Example__:
 ```
