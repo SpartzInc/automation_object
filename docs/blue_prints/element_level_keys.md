@@ -5,6 +5,7 @@ This document will cover the available keys and values that may be used at the b
 
 ### Table of Contents:
 
+*    [Element Level Hooks](#element-level-hooks)
 *    [css](#css)
 *    [custom_methods](#custom_methods)
 *    [custom_range](#custom_range)
@@ -15,6 +16,41 @@ This document will cover the available keys and values that may be used at the b
 *    [xpath](#xpath)
 
 ***
+
+### Element Level Hooks:
+
+__Expecting__: Hash
+
+__Requirements__:  Hook will need to be a valid available element method.  Can be attached to any method you
+might use.  When that method is run then the hook will run accordingly.
+
+__Description__:  Use hooks on elements when you expect actions to occur when using a certain element method.
+
+__Example__:
+```
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+screens:
+  home_screen:
+    elements:
+      username_field:
+        css: '#username'
+        send_keys:
+          before:
+            sleep: 5
+          after:
+            wait_for_elements:
+              - element_name: 'password_field'
+                visible?: true #Totally hypothetical, no reason for it to be invisible
+        submit:
+          after:
+            change_screen: 'account_screen'
+      password_field:
+        css: '#pass'
+  account_screen:
+  #And so on
+```
+---
 
 ### css:
 
