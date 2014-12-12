@@ -157,7 +157,7 @@ default_screen: 'home_screen'
 
 ### scroll_up:
 
-__Expecting__: String
+__Expecting__: Hash
 
 __Requirements__:
 
@@ -172,45 +172,16 @@ default_screen: 'home_screen'
 
 ### scroll_down:
 
-__Expecting__: String
+Same as above just scrolling down
 
-__Requirements__:
-
-__Description__:
-
-__Example__:
-```
-base_url: 'http://www.google.com'
-default_screen: 'home_screen'
-```
 ---
 
 ### scroll_left:
 
-__Expecting__: String
+Same as above just scrolling left
 
-__Requirements__:
-
-__Description__:
-
-__Example__:
-```
-base_url: 'http://www.google.com'
-default_screen: 'home_screen'
-```
 ---
 
 ### scroll_right:
 
-__Expecting__: String
-
-__Requirements__:
-
-__Description__:
-
-__Example__:
-```
-base_url: 'http://www.google.com'
-default_screen: 'home_screen'
-```
----
+Same as above just scrolling right
