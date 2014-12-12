@@ -20,18 +20,197 @@ This document will cover the available keys and values that may be used at the s
 
 ***
 
-### base_url:
+### accept:
 
 __Expecting__: String
 
-__Requirements__: Expecting web broser for Appium or Selenium, if app it will error out
+__Requirements__:
 
 __Description__:
-
-Base url of the website you want to automate
 
 __Example__:
 ```
 base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+```
+---
+
+### automatic_screen_changes:
+
+__Expecting__: String
+
+__Requirements__:
+
+__Description__:
+
+__Example__:
+```
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+```
+---
+
+### before_load:
+
+__Expecting__: String
+
+__Requirements__:
+
+__Description__:
+
+__Example__:
+```
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+```
+---
+
+### dismiss:
+
+__Expecting__: String
+
+__Requirements__:
+
+__Description__:
+
+__Example__:
+```
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+```
+---
+
+### element_groups:
+
+__Expecting__: String
+
+__Requirements__:
+
+__Description__:
+
+__Example__:
+```
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+```
+---
+
+### elements:
+
+__Expecting__: String
+
+__Requirements__:
+
+__Description__:
+
+__Example__:
+```
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+```
+---
+
+### included_views:
+
+__Expecting__: String
+
+__Requirements__:
+
+__Description__:
+
+__Example__:
+```
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+```
+---
+
+### modals:
+
+__Expecting__: String
+
+__Requirements__:
+
+__Description__:
+
+__Example__:
+```
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+```
+---
+
+### live?:
+
+__Expecting__: String
+
+__Requirements__:
+
+__Description__:
+
+__Example__:
+```
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+```
+---
+
+### scroll_up:
+
+__Expecting__: String
+
+__Requirements__:
+
+__Description__:
+
+__Example__:
+```
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+```
+---
+
+### scroll_down:
+
+__Expecting__: String
+
+__Requirements__:
+
+__Description__:
+
+__Example__:
+```
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+```
+---
+
+### scroll_left:
+
+__Expecting__: String
+
+__Requirements__:
+
+__Description__:
+
+__Example__:
+```
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+```
+---
+
+### scroll_right:
+
+__Expecting__: String
+
+__Requirements__:
+
+__Description__:
+
+__Example__:
+```
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
 ```
 ---
