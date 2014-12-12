@@ -14,7 +14,7 @@ File Structure:
   /views #We usually try to group views together in one folder
     header_view.yaml
     footer_view.yaml
-  base.yaml #Usually use this to define base_url, throttling (if needed), other base level key/values
+  base.yaml #Usually use this to define base_url, throttling, other base level key/values
   home_screen.yaml
   list_screen.yaml
   about_screen.yaml
