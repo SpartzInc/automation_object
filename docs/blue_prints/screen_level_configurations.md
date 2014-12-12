@@ -12,7 +12,7 @@ This document will cover the available keys and values that may be used at the s
 *    [elements](#elements)
 *    [included_views](#included_views)
 *    [modals](#modals)
-*    [live?](#live?)
+*    [live?](#live)
 *    [scroll_up](#scroll_up)
 *    [scroll_down](#scroll_down)
 *    [scroll_left](#scroll_left)
