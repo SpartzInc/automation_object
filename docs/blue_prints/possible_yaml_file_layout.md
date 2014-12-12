@@ -31,6 +31,7 @@ views:
         click:
           after:
             change_screen: 'home_screen'
+
 #footer_view.yaml
 views:
   footer_view:
@@ -50,11 +51,13 @@ views:
         click:
           after:
             change_screen: 'about_screen'
+
 #base.yaml
 base_url: 'http://www.google.com'
 default_screen: 'home_screen'
 throttle_driver_methods:
   manage: 2
+
 #home_screen
 screens:
   home_screen:
@@ -68,6 +71,7 @@ screens:
         click:
           after:
             change_screen: 'list_screen'
+
 #list_screen
 screens:
   list_screen:
@@ -79,6 +83,7 @@ screens:
         css: 'h1'
       list_description:
         css: 'div.description p'
+
 #about_screen
 screens:
   about_screen:
@@ -88,6 +93,7 @@ screens:
     elements:
       title:
         css: 'h1'
+
 #help_screen
 screens:
   help_screen:
@@ -97,4 +103,23 @@ screens:
     elements:
       title:
         css: 'h1'
+```
+
+Some sample ruby code that use this blue prints
+```
+driver = Selenium::WebDriver.for :chrome
+blue_prints = AutomationObject::BluePrint.new('top_blue_print_directory') #Loads all files recursively
+automation_object = AutomationObject::Framework.new(driver, blue_prints)
+
+#Go to list screen
+automation_object.home_screen.list_links.sample.click #Working with array
+#Go to help screen
+automation_object.list_screen.help_link.click
+
+#Current screen is help_screen
+#Go to a screen automatically
+automation_object.about_screen #Will trigger the framework to try to get to that screen
+
+#Print about screen title element text
+puts automation_object.about_screen.title.text
 ```
