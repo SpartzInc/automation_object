@@ -5,9 +5,13 @@ It is possible to arrange your blue prints in any directory/file structure as yo
 up your YAML files by screens and views.  Here is an example of a directory/file structure we typically use.
 
 Remember all of these hashes are merged into the same hash.  As long as you keep the levels correct you should be fine.
+
+You will also notice in this example that all of the screens are connected to each other via change_screen
+
+File Structure:
 ```
 /top_blue_print_directory
-  /views #We try to group views together in one folder to keep the above directory for base and screen yaml files
+  /views #We usually try to group views together in one folder
     header_view.yaml
     footer_view.yaml
   base.yaml #Usually use this to define base_url, throttling (if needed), other base level key/values
@@ -15,5 +19,82 @@ Remember all of these hashes are merged into the same hash.  As long as you keep
   list_screen.yaml
   about_screen.yaml
   help_screen.yaml
-  menu_screen.yaml
+```
+Files Contents:
+```
+#header_view.yaml
+views:
+  header_view:
+    elements:
+      header_logo_button:
+        css: 'header div.logo a'
+        click:
+          after:
+            change_screen: 'home_screen'
+#footer_view.yaml
+views:
+  footer_view:
+    elements:
+      footer_logo_button:
+        css: 'footer div.logo a'
+        click:
+          after:
+            change_screen: 'home_screen'
+      help_link:
+        css: 'footer div.help_link a'
+        click:
+          after:
+            change_screen: 'help_screen'
+      about_link:
+        css: 'footer div.about_link a'
+        click:
+          after:
+            change_screen: 'about_screen'
+#base.yaml
+base_url: 'http://www.google.com'
+default_screen: 'home_screen'
+throttle_driver_methods:
+  manage: 2
+#home_screen
+screens:
+  home_screen:
+    included_views:
+      - 'header_view'
+      - 'footer_view'
+    elements:
+      list_links:
+        multiple: true
+        css: 'div.list a'
+        click:
+          after:
+            change_screen: 'list_screen'
+#list_screen
+screens:
+  list_screen:
+    included_views:
+      - 'header_view'
+      - 'footer_view'
+    elements:
+      list_title:
+        css: 'h1'
+      list_description:
+        css: 'div.description p'
+#about_screen
+screens:
+  about_screen:
+    included_views:
+      - 'header_view'
+      - 'footer_view'
+    elements:
+      title:
+        css: 'h1'
+#help_screen
+screens:
+  help_screen:
+    included_views:
+      - 'header_view'
+      - 'footer_view'
+    elements:
+      title:
+        css: 'h1'
 ```
