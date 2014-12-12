@@ -79,17 +79,13 @@ screens:
 
 - [Initializing the Framework](framework/initializing_the_framework.md)
   - Shows how you would create a new blue print object and subsequently the framework object.
-
 - [BluePrint Doc](framework/blueprint.md)
   - How to use the blue print class/object
-
 - [Framework Doc](framework/framework.md)
   - How to use the framework object
-
 - [Screen Doc](framework/screen.md)
   - How to use a screen object, these are dynamically created depending on your configuration, contained in the framework
   object
-
 - [Element Doc](framework/element.md)
   - How to use a element object, these are dynamically created depending on your configuration, contained in the
   screen object it was defined in.
