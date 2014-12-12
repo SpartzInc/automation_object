@@ -168,6 +168,16 @@ __Example__:
 ```
 base_url: 'http://www.google.com'
 default_screen: 'home_screen'
+screens:
+  home_screen:
+    elements:
+      element_array_example:
+        multiple: true
+        css: 'a'
+      element_hash_example:
+        multiple: true
+        css: 'a'
+        define_elements_by: 'text'
 ```
 ---
 
@@ -216,5 +226,10 @@ __Example__:
 ```
 base_url: 'http://www.google.com'
 default_screen: 'home_screen'
+screens:
+  home_screen:
+    elements:
+      title:
+        xpath: '//path/to/title/element'
 ```
 ---

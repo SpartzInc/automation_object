@@ -21,6 +21,7 @@ a decoupled complete version.  Right now, many of the objects are coupled tightl
 We will try to get a decoupled version out by Jan/Feb 2015.  This gem does work well for our purposes, but I wanted
 to warn you beforehand so I wasn't making empty promises.
 
+My assumption is that interactions with the framework from the outside and configurations will remain entirely the same.
 Also we will probably hold off on adding large features/changes until the more complete decoupled version is ready.
 
 ### Usage
