@@ -118,7 +118,7 @@ automation_object.home_screen.list_links.sample.click #Working with array
 automation_object.list_screen.help_link.click
 
 #Current screen is help_screen
-#Go to a screen automatically
+#Go to a about screen automatically
 automation_object.about_screen #Will trigger the framework to try to get to that screen
 
 #Print about screen title element text
