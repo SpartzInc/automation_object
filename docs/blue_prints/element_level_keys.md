@@ -22,6 +22,9 @@ __Expecting__: String
 
 __Requirements__: Valid css selector to grab the element(s)
 
+__Description__:  Use this or xpath to define where you element is going to be on the page so that the framework
+can work with and supply you with the element.
+
 __Example__:
 ```
 base_url: 'http://www.google.com'
@@ -43,9 +46,12 @@ screens:
 
 __Expecting__: Hash
 
-__Requirements__:
+__Requirements__: Defining element_method and evaluate properly.  element_method needs to be a valid available element
+method to run ruby code against.  evaluate needs to be valid ruby code.
 
-__Description__:
+__Description__: Below ruby code is run when
+
+
 
 __Example__:
 ```
@@ -61,17 +67,20 @@ home_screen:
           element_method: 'href'
           evaluate: 'match(/^.+\/lists\/(\d+).+$/)[1].to_i'
 ```
+Code run when requesting the custom method:
+```
+return element_object.href.evaluate('match(/^.+\/lists\/(\d+).+$/)[1].to_i')
+```
+
 ---
 
 ### custom_range:
 
 __Expecting__: Hash
 
-__Requirements__:
+__Requirements__: Element is multiple, start and stop are defined as integers.  1 is the beginning.
 
-__Description__:
-
-
+__Description__:  Use this if you need to work with an artificially smaller set of elements.
 
 __Example__:
 ```
@@ -96,12 +105,28 @@ __Requirements__: Value is either a valid element method or defined custom metho
 
 __Description__:
 
-Use this configuration to create Element Hashes instead of Element Arrays.
+Use this configuration to create Element Hashes instead of Element Arrays.  When the elements are loaded, the framework
+will run each element method and use the return as the key for that element.
 
 __Example__:
 ```
 base_url: 'http://www.google.com'
 default_screen: 'home_screen'
+screens:
+  home_screen:
+    elements:
+      links_example:
+        multiple: true
+        css: 'a'
+        define_elements_by: 'href'
+      links_custom_method_example:
+        multiple: true
+        css: 'a'
+        define_elements_by: 'list_id'
+        custom_methods:
+          list_id:
+            element_method: 'href'
+            evaluate: 'match(/^.+\/lists\/(\d+).+$/)[1].to_i'
 ```
 ---
 
@@ -136,7 +161,8 @@ __Expecting__: TrueClass
 
 __Requirements__: Expects only true otherwise don't define multiple, very unnecessary.
 
-__Description__:
+__Description__: Use this when you need to define sets of elements.  Elements can be Element Hashes or Element Arrays.
+Use [define_elements_by](#define_elements_by) when you want to have element hashes instead of arrays.
 
 __Example__:
 ```
@@ -179,13 +205,12 @@ screens:
 
 ### xpath:
 
-__Expecting__:
+__Expecting__: String
 
-__Requirements__:
+__Requirements__: Valid xpath selector to grab the element(s)
 
-__Description__:
-
-
+__Description__:  Use this or css to define where you element is going to be on the page so that the framework
+can work with and supply you with the element.
 
 __Example__:
 ```
