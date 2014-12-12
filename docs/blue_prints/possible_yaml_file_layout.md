@@ -22,7 +22,7 @@ File Structure:
 ```
 Files Contents:
 ```
-#header_view.yaml
+#views/header_view.yaml
 views:
   header_view:
     elements:
@@ -32,7 +32,7 @@ views:
           after:
             change_screen: 'home_screen'
 
-#footer_view.yaml
+#views/footer_view.yaml
 views:
   footer_view:
     elements:
@@ -58,7 +58,7 @@ default_screen: 'home_screen'
 throttle_driver_methods:
   manage: 2
 
-#home_screen
+#home_screen.yaml
 screens:
   home_screen:
     included_views:
@@ -72,7 +72,7 @@ screens:
           after:
             change_screen: 'list_screen'
 
-#list_screen
+#list_screen.yaml
 screens:
   list_screen:
     included_views:
@@ -84,7 +84,7 @@ screens:
       list_description:
         css: 'div.description p'
 
-#about_screen
+#about_screen.yaml
 screens:
   about_screen:
     included_views:
@@ -94,7 +94,7 @@ screens:
       title:
         css: 'h1'
 
-#help_screen
+#help_screen.yaml
 screens:
   help_screen:
     included_views:
@@ -108,7 +108,8 @@ screens:
 Some sample ruby code that use this blue prints
 ```
 driver = Selenium::WebDriver.for :chrome
-blue_prints = AutomationObject::BluePrint.new('top_blue_print_directory') #Loads all files recursively
+AutomationObject::BluePrint::base_directory = '/path/to/base/blueprints/directory'
+blue_prints = AutomationObject::BluePrint.new('top_blue_print_directory') #Load files recursively
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
 
 #Go to list screen
