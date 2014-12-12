@@ -98,7 +98,7 @@ screens:
       title_text:
         css: '#title_text'
   #Add so on
-  #Also it is advantageous to split up YAML files by screen to help keep a maintainable configuration.
+  #Also it's advantageous to split up YAML files by screen to help keep a maintainable configuration.
 ```
 ---
 

@@ -70,6 +70,8 @@ screens:
   - Available screen level configurations for blue prints
 - [Element Level Configurations](blue_prints/element_level_keys.md)
   - Available element level configurations for blue prints
+- [Possible YAML File Layout](blue_prints/possible_yaml_file_layout.md)
+  - Possible YAML file layout to make your blue prints more organized.
 ### Framework Methods
 
 ### Examples
