@@ -4,19 +4,19 @@ Screen Level Configurations
 This document will cover the available keys and values that may be used at the screens level.
 
 ### Table of Contents:
-*    [accept](#elements)
-*    [automatic_screen_changes](#elements)
-*    [before_load](#elements)
-*    [dismiss](#elements)
-*    [element_groups](#elements)
+*    [accept](#accept)
+*    [automatic_screen_changes](#automatic_screen_changes)
+*    [before_load](#before_load)
+*    [dismiss](#dismiss)
+*    [element_groups](#element_groups)
 *    [elements](#elements)
-*    [included_views](#elements)
+*    [included_views](#included_views)
 *    [modals](#modals)
-*    [live?](#elements)
-*    [scroll_up](#elements)
-*    [scroll_down](#elements)
-*    [scroll_left](#elements)
-*    [scroll_right](#elements)
+*    [live?](#live?)
+*    [scroll_up](#scroll_up)
+*    [scroll_down](#scroll_down)
+*    [scroll_left](#scroll_left)
+*    [scroll_right](#scroll_right)
 
 ***
 
