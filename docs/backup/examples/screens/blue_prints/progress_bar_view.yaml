@@ -1,5 +1,0 @@
-views:
-  progress_bar_view:
-    elements:
-      progress_bar:
-        xpath: '//*[@id="progress"]/div'

@@ -1,2 +1,0 @@
-default_screen: 'first_screen'
-base_url: 'https://google.com' #Will redirect to file path of site.html, requires url for browsers
