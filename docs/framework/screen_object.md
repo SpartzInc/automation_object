@@ -21,76 +21,82 @@ your blue prints.
 *    [maximize_window](#maximize_window)
 *    [navigate_back](#navigate_back)
 *    [screenshot](#screenshot)
-*    [scroll_up](#scroll_up)
 *    [scroll_down](#scroll_down)
-*    [scroll_right](#scroll_right)
 *    [scroll_left](#scroll_left)
+*    [scroll_right](#scroll_right)
+*    [scroll_up](#scroll_up)
 *    [set_window_location](#set_window_location)
 *    [set_window_size](#set_window_size)
 
 ### accept:
 
-__Description__:
+__Description__: Use this method when a screen is also a prompt.  Will accept the prompt when calling this method
 
-__Parameters__:
+__Parameters__: None
 
-__Returns__:
+__Returns__: Nil
 
 __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
+automation_object.terms_prompt.accept
 ```
 ---
 
 ### close_window:
 
-__Description__:
+__Description__: Browser only, use this to close the window
 
-__Parameters__:
+__Parameters__: None
 
-__Returns__:
+__Returns__: Nil
 
 __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
+automation_object.new_window_screen.close_window
+#If there is any other screens that are live they will still be accessible
+puts automation_object.home_screen.title_text.text
 ```
 ---
 
 ### current_url:
 
-__Description__:
+__Description__: Browser only, use this to get the url of the screen
 
-__Parameters__:
+__Parameters__: None
 
-__Returns__:
+__Returns__: String, url that the screen is on
 
 __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
+puts automation_object.home_screen.current_url
 ```
 ---
 
 ### dismiss:
 
-__Description__:
+__Description__: Use this method when a screen is also a prompt.  Will dismiss the prompt when calling this method
 
-__Parameters__:
+__Parameters__: None
 
-__Returns__:
+__Returns__: Nil
 
 __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
+automation_object.additional_info_prompt.dismiss
 ```
 ---
 
 ### get_window_size:
 
-__Description__:
+__Description__: Use this method to get the window size of the browser or app
 
-__Parameters__:
+__Parameters__: None
 
-__Returns__:
+__Returns__: Hash [:x => Numeric, :y => Numeric]
 
 __Example__:
 ```
@@ -100,140 +106,128 @@ automation_object = AutomationObject::Framework.new(driver, blue_prints)
 
 ### hide_keyboard:
 
-__Description__:
+__Description__: Mobile Only, use this to hide the keyboard that will appear when typing in an input.
 
-__Parameters__:
+__Parameters__: close_key (String) (default = nil)
 
-__Returns__:
+__Returns__: Nil
 
 __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
+automation_object.home_screen.hide_keyboard
+
+#Have a different default hide keyboard text
+automation_object.home_screen.hide_keyboard('Done')
 ```
 ---
 
 ### maximize_window:
 
-__Description__:
+__Description__: Use this method to maximize the browser window
 
-__Parameters__:
+__Parameters__: None
 
-__Returns__:
+__Returns__: Nil
 
 __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
+automation_object.home_screen.maximize_window
 ```
 ---
 
 ### navigate_back:
 
-__Description__:
+__Description__: Browser only, use this to navigate back. There must be a previous screen to navigate back to.
 
-__Parameters__:
+__Parameters__: None
 
-__Returns__:
+__Returns__: Nil
 
 __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
+automation_object.home_screen.second_screen_button.click
+automation_object.second_screen.navigate_back
+#Now on the home screen
 ```
 ---
 
 ### screenshot:
 
-__Description__:
+__Description__: Take a screenshot of the screen via this method
 
-__Parameters__:
+__Parameters__: path (String), Full file path where you want the image to be stored
 
-__Returns__:
-
-__Example__:
-```
-automation_object = AutomationObject::Framework.new(driver, blue_prints)
-```
----
-
-### scroll_up:
-
-__Description__:
-
-__Parameters__:
-
-__Returns__:
+__Returns__: Nil
 
 __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
+automation_object.home_screen.screenshot('//path/to/png/file.png')
 ```
 ---
 
 ### scroll_down:
 
-__Description__:
+__Description__: Action method to scroll down on a screen
 
-__Parameters__:
+__Parameters__: None
 
-__Returns__:
-
-__Example__:
-```
-automation_object = AutomationObject::Framework.new(driver, blue_prints)
-```
----
-
-### scroll_right:
-
-__Description__:
-
-__Parameters__:
-
-__Returns__:
+__Returns__: Nil
 
 __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
+automation_object.home_screen.scroll_down
 ```
 ---
 
 ### scroll_left:
 
-__Description__:
+__Description__: Same as above just scrolling left
 
-__Parameters__:
+---
 
-__Returns__:
+### scroll_right:
 
-__Example__:
-```
-automation_object = AutomationObject::Framework.new(driver, blue_prints)
-```
+__Description__: Same as above just scrolling right
+
+---
+
+### scroll_up:
+
+__Description__: Same as above just scrolling up
+
 ---
 
 ### set_window_location:
 
-__Description__:
+__Description__: Set the browser top left window location via this method
 
-__Parameters__:
+__Parameters__: x (Numeric), y (Numeric)
 
-__Returns__:
+__Returns__: Nil
 
 __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
+automation_object.home_screen.set_window_location(100, 200)
 ```
 ---
 
 ### set_window_size:
 
-__Description__:
+__Description__: Set the browser window size via this method
 
-__Parameters__:
+__Parameters__: x (Numeric), y (Numeric)
 
-__Returns__:
+__Returns__: Nil
 
 __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
+automation_object.home_screen.set_window_size(1200, 800)
 ```
 ---
