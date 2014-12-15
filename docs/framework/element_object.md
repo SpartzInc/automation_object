@@ -5,6 +5,7 @@ Element objects wrap either Selenium element object or Appium element object.  I
 methods will be relayed to the Selenium or Appium object.
 
 [Selenium Element Documentation](https://selenium.googlecode.com/svn/trunk/docs/api/rb/Selenium/WebDriver/Element.html)
+
 [Appium Documentation](https://github.com/appium/ruby_lib/tree/master/docs)
 
 Also ElementHash, ElementArray, and ElementGroup objects will contain groups of Element objects.
