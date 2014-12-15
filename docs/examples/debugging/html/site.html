@@ -1,0 +1,205 @@
+<html>
+<head>
+    <title>Simple Example</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <script type="text/javascript">
+
+        var current_screen = 1;
+        var next_screen;
+        var numeric_to_number;
+        numeric_to_number = {
+            1: 'one',
+            2: 'two',
+            3: 'three',
+            4: 'four',
+            5: 'five'
+        };
+
+        $(function () {
+            bindButtons();
+        });
+
+        function changeScreen(current_screen, next_screen) {
+            var current_screen_selector = "#screen_" + numeric_to_number[current_screen];
+            var next_screen_selector = "#screen_" + numeric_to_number[next_screen];
+
+            unbindButtons();
+
+            $(current_screen_selector).hide();
+            $(next_screen_selector).show();
+
+            bindButtons();
+        }
+
+        function unbindButtons() {
+            $(".next_button").unbind('click');
+            $(".previous_button").unbind('click');
+        }
+
+        function bindButtons() {
+            $(".next_button").bind("click", function () {
+                next_screen = current_screen + 1;
+                changeScreen(current_screen, next_screen);
+                current_screen = next_screen;
+            });
+
+            $(".previous_button").bind("click", function () {
+                next_screen = current_screen - 1
+                changeScreen(current_screen, next_screen);
+                current_screen = next_screen;
+            });
+        }
+
+
+    </script>
+    <style type="text/css">
+        body {
+            margin: 10px;
+        }
+
+        .panel {
+            width: 800px;
+        }
+
+        .progress-bar {
+            transition: none;
+        }
+    </style>
+</head>
+<body>
+<h1>Simple Example</h1>
+
+<p>Simple example with 5 different screens to show how to navigate UI</p>
+
+<div class="panel panel-default" style="background-color: #0085CA; width: 830px; height: 500px; position: relative;">
+    <div class="panel-body">
+        <div id="progress" class="progress" style="position: relative; top: 250px; display: none;">
+            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                 style="width: 0%; background-color: #FEDD00;">&nbsp;
+            </div>
+        </div>
+        <div id="screen_one" class="panel panel-default" style="background-color: #EF3340;">
+            <div class="panel-body">
+                <h2>Screen One</h2>
+
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                    with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                    publishing software like Aldus PageMaker including versions of Lorem Ipsum. t is a long established
+                    fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                    The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
+                    opposed to using 'Content here, content here', making it look like readable English. Many desktop
+                    publishing packages and web page editors now use Lorem Ipsum as their default model text, and a
+                    search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have
+                    evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the
+                    like).</p>
+                <button type="button" class="btn btn-default next_button" style="background-color: #FE5000;">Next
+                    Screen
+                </button>
+            </div>
+        </div>
+        <div id="screen_two" class="panel panel-default" style="background-color: #CE0058; display: none;">
+            <div class="panel-body">
+                <h2>Screen Two</h2>
+
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                    with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                    publishing software like Aldus PageMaker including versions of Lorem Ipsum. t is a long established
+                    fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                    The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
+                    opposed to using 'Content here, content here', making it look like readable English. Many desktop
+                    publishing packages and web page editors now use Lorem Ipsum as their default model text, and a
+                    search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have
+                    evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the
+                    like).</p>
+                <button type="button" class="btn btn-default previous_button" style="background-color: #74D1EA;">
+                    Previous Screen
+                </button>
+                <button type="button" class="btn btn-default next_button" style="background-color: #009ACE;">Next
+                    Screen
+                </button>
+            </div>
+        </div>
+        <div id="screen_three" class="panel panel-default" style="background-color: #E10098; display: none;">
+            <div class="panel-body">
+                <h2>Screen Three</h2>
+
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                    with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                    publishing software like Aldus PageMaker including versions of Lorem Ipsum. t is a long established
+                    fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                    The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
+                    opposed to using 'Content here, content here', making it look like readable English. Many desktop
+                    publishing packages and web page editors now use Lorem Ipsum as their default model text, and a
+                    search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have
+                    evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the
+                    like).</p>
+                <button type="button" class="btn btn-default previous_button" style="background-color: #FE5000;">
+                    Previous Screen
+                </button>
+                <button type="button" class="btn btn-default next_button" style="background-color: #CE0058;">Next
+                    Screen
+                </button>
+            </div>
+        </div>
+        <div id="screen_four" class="panel panel-default" style="background-color: #BB29BB; display: none;">
+            <div class="panel-body">
+                <h2>Screen Four</h2>
+
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                    with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                    publishing software like Aldus PageMaker including versions of Lorem Ipsum. t is a long established
+                    fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                    The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
+                    opposed to using 'Content here, content here', making it look like readable English. Many desktop
+                    publishing packages and web page editors now use Lorem Ipsum as their default model text, and a
+                    search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have
+                    evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the
+                    like).</p>
+                <button type="button" class="btn btn-default previous_button" style="background-color: #009ACE;">
+                    Previous Screen
+                </button>
+                <button type="button" class="btn btn-default next_button" style="background-color: #FE5000;">Next
+                    Screen
+                </button>
+            </div>
+        </div>
+        <div id="screen_five" class="panel panel-default" style="background-color: #00AB84; display: none;">
+            <div class="panel-body">
+                <h2>Screen Five</h2>
+
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                    with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                    publishing software like Aldus PageMaker including versions of Lorem Ipsum. t is a long established
+                    fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                    The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
+                    opposed to using 'Content here, content here', making it look like readable English. Many desktop
+                    publishing packages and web page editors now use Lorem Ipsum as their default model text, and a
+                    search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have
+                    evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the
+                    like).</p>
+                <button type="button" class="btn btn-default previous_button" style="background-color: #CE0058;">
+                    Previous Screen
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

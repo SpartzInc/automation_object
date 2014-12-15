@@ -1,0 +1,17 @@
+screens:
+  second_screen:
+    elements:
+      title_text:
+        css: '#screen_one h2'
+      description_test:
+        css: '#screen_one p'
+      previous_button:
+        css: '#screen_two .previous_button'
+        click:
+          after:
+            change_screen: 'first_screen'
+      next_button:
+        css: '#screen_two .next_button'
+        click:
+          after:
+            change_screen: 'third_screen'

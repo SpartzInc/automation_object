@@ -1,0 +1,20 @@
+## Automatic Screen Routing Example
+
+This is an example copied over from the Simple example, with some changes in the run.rb file.
+
+In it, the file doesn't try to use the screens currently live and doesn't actually make the change to another screen itself.
+It calls screens that are not live and the framework will try to automatically route to that screen.
+
+### Installation and Execution
+
+1. cd into this directory
+2. Run command 'bundle install' to install the gems needed
+3. Run command 'ruby run.rb' to run the already script to interact with the UI
+4. Press enter to quit
+
+### play.rb usage
+
+This file will allow you to execute commands in the console and test out the framework.  Console will ask which command
+you would like to input eg 'automation_object.first_screen.next_button.click'.
+
+When you are done executing commands press control+c to exit the loop then press enter to quit.

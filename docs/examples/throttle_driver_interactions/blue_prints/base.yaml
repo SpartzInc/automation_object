@@ -1,5 +1,5 @@
 default_screen: 'first_screen'
-base_url: 'https://google.com' #Will redirect to file path of site.html, requires url for browsers
+base_url: 'https://google.com' #Will change to file path of site.html, not typical implementation
 throttle_driver_methods: #Throttle some driver methods
   exists?: 1
   find_element: 2

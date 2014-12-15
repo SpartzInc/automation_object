@@ -1,2 +1,2 @@
-base_url: 'https://google.com' #Will redirect to file path of site.html, requires url for browsers
+base_url: 'https://google.com' #Will change to file path of site.html, not typical implementation
 screen_transition_sleep: 1 #Simple sleep when changing screens, nice when you are starting out
