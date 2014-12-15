@@ -25,6 +25,7 @@ driver = Selenium::WebDriver.for :chrome
 
 #Get the blue prints from the directory and return the Hash into blue_prints
 blue_prints = AutomationObject::BluePrint.new('/full/path/to/blue/prints/directory')
+
 #Initiate the framework object with the driver and blue prints
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
 ```
@@ -45,6 +46,8 @@ AutomationObject::debug_mode = true
 
 #Set the base directory and create blue prints
 AutomationObject::BluePrint::base_directory = '/base/blue_print/directory'
+
+#Create the blue prints Hash
 blue_prints = AutomationObject::BluePrint.new('/relative/path/from/base/directory')
 
 #Initiate the framework object with the driver and blue prints
@@ -64,6 +67,8 @@ driver = Selenium::WebDriver.for :chrome
 
 #Set the base directory
 AutomationObject::BluePrint::base_directory = '/base/blue_print/directory'
+
+#Create the blue prints Hash
 blue_prints = AutomationObject::BluePrint.new('/relative/path/from/base/directory')
 
 #Initiate the framework object with the driver and blue prints
@@ -88,6 +93,7 @@ AutomationObject::BluePrint::base_directory = '/base/blue_print/directory'
 #Turn blue print validation on
 AutomationObject::BluePrint::validate_blueprint = true
 
+#Create the blue prints Hash
 blue_prints = AutomationObject::BluePrint.new('/relative/path/from/base/directory')
 
 #Initiate the framework object with the driver and blue prints
