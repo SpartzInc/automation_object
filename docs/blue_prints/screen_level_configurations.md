@@ -234,37 +234,80 @@ automation_object.home_screen.list_links_group.each { |link_group|
 
 ### elements:
 
-__Expecting__: String
+__Expecting__: Hash
 
-__Requirements__:
+__Requirements__: Use this to describe all the elements that a screen contains that you need to work with while
+automating.
 
-__Description__:
+__Description__: This key can be used to describe single elements, element hashes, and element arrays.
 
 __Example__:
 ```
 base_url: 'http://www.google.com'
 default_screen: 'home_screen'
+screens:
+  home_screen:
+    elements:
+      title_text: #Element, singular
+        css: 'h1#title'
+      links_array: #ElementArray, multiple
+        css: 'a'
+        multiple: true
+      links_hash: #ElementHash, multiple
+        css: 'a'
+        multiple: true
+        define_elements_by: 'href'
 ```
+__Ruby example of above configuration__:
+```
+automation_object = AutomationObject::Framework.new(driver, blue_prints)
+
+puts automation_object.home_screen.title_text #Element
+automation_object.home_screen.links_array.each { |link_element|
+  puts link.text
+}
+
+automation_object.home_screen.links_hash.each { |link_key, link_element|
+  puts link_key
+  puts link_element.text
+}
 ---
 
 ### included_views:
 
-__Expecting__: String
+__Expecting__: Array
 
-__Requirements__:
+__Requirements__:  Expects an Array of defined views
 
-__Description__:
+__Description__: Use this when a view contains configurations relevant to the screen.  Views are used when you have
+configurations that can be used for multiple screens.
 
 __Example__:
 ```
 base_url: 'http://www.google.com'
 default_screen: 'home_screen'
+views:
+  header_view:
+    header_logo_button:
+      css: 'header div.logo a'
+  footer_view:
+    footer_logo_button:
+      css: 'footer div.logo a'
+screens:
+  home_screen:
+    included_views:
+      - 'header_view'
+      - 'footer_view'
+  list_screen:
+    included_views:
+      - 'header_view'
+      - 'footer_view'
 ```
 ---
 
 ### modals:
 
-__Expecting__: String
+__Expecting__: Hash
 
 __Requirements__:
 
