@@ -271,6 +271,7 @@ automation_object.home_screen.links_hash.each { |link_key, link_element|
   puts link_key
   puts link_element.text
 }
+```
 ---
 
 ### included_views:
