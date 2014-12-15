@@ -192,16 +192,43 @@ automation_object.about_screen.dismiss
 
 ### element_groups:
 
-__Expecting__: String
+__Expecting__: Hash
 
-__Requirements__:
+__Requirements__: xPath's on sub-elements of the group are required for this to work properly.  This is because it's
+easier to combine xPaths to form each group.
 
-__Description__:
+__Description__:  Use this when you need to test groups of elements in a pragmatic way.  At our company we use this to
+test groups of list links that include an image, link text, as well as the author.
 
 __Example__:
 ```
 base_url: 'http://www.google.com'
 default_screen: 'home_screen'
+screens:
+  home_screen:
+    element_groups:
+      list_links_group: #Only allow use of xPaths because of ease of getting specific indexes
+        #xPath below defines the top level element that contains the sub elements.
+        xpath: '//div[@id="main_block"]//div[contains(@class, "feed-item")]'
+        sub_elements:
+          promo_image:
+            xpath: '/div[contains(@class, "image")]/a/div/img'
+          link_text:
+            xpath: '//h4/a'
+          author_text:
+            xpath: '/div[contains(@class, "details")]/div[contains(@class, "author")]'
+```
+__Ruby example of above configuration__:
+```
+automation_object = AutomationObject::Framework.new(driver, blue_prints)
+#ElementGroup returns an Array which contains each sub element within it
+#This way you can properly test groups of elements without worrying about mixing
+#of elements from elsewhere
+automation_object.home_screen.list_links_group.each { |link_group|
+  puts link_group.promo_image.attribute('src')
+  puts link_group.link_text.href
+  puts link_group.author_text.text
+}
 ```
 ---
 
