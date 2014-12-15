@@ -6,9 +6,7 @@ up your YAML files by screens and views.  Here is an example of a directory/file
 
 Remember all of these hashes are merged into the same hash.  As long as you keep the levels correct you should be fine.
 
-You will also notice in this example that all of the screens are connected to each other via change_screen
-
-File Structure:
+Example File Structure:
 ```
 /top_blue_print_directory
   /views #We usually try to group views together in one folder
@@ -20,7 +18,7 @@ File Structure:
   about_screen.yaml
   help_screen.yaml
 ```
-Files Contents:
+Example Files Contents:
 ```
 #views/header_view.yaml
 views:
