@@ -1,0 +1,12 @@
+screens:
+  fifth_screen:
+    elements:
+      title_text:
+        css: '#screen_one h2'
+      description_test:
+        css: '#screen_one p'
+      previous_button:
+        css: '#screen_five .previous_button'
+        click:
+          after:
+            change_screen: 'fourth_screen'
