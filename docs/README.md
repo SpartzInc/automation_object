@@ -80,8 +80,6 @@ screens:
 
 - [Initializing the Framework](framework/initializing_the_framework.md)
   - Shows how you would create a new blue print object and subsequently the framework object.
-- [BluePrint Documentation](framework/blueprint.md)
-  - How to use the blue print class/object
 - [Framework Documentation](framework/framework.md)
   - How to use the framework object
 - [Screen Object Documentation](framework/screen_object.md)
