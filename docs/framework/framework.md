@@ -11,56 +11,70 @@ Framework object will contain all the objects dynamically created based on the b
 
 ### driver_object:
 
-__Description__:
+__Description__: Use driver_object which is the extended version used in AutomationObject.  Will also contain thread
+safe operations if you are threading, so mutexing is automatically taken care of for you.  Will also throttle if
+you have any throttling set in your blue prints.
 
-__Parameters__:
+__Parameters__: None
 
-__Returns__:
+__Returns__: AutomationObject::Driver::Driver
 
 __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
+automation_object.driver_object.execute_script('return document.readyState;')
+
 ```
 ---
 
 ### on:
 
-__Description__:
+__Description__: Event emitter, only has one usage right now, may have more in the future.  If you would like to bind
+on the change_screen event you can use this method.  Implements [EventEmitter](http://shokai.github.io/event_emitter/)
 
-__Parameters__:
+__Parameters__: Symbol (event name)
 
-__Returns__:
+__Returns__: Nil
 
 __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
+automation_object.on :change_screen do |screen_name|
+  puts "Screen has changed to #{screen_name}"
+end
 ```
 ---
 
 ### print_objects:
 
-__Description__:
+__Description__: Prints out nicely formatted information of the dynamic objects contained in the framework object,
+such as Screen objects, Modal objects, Element Hash objects, Element Array objects, Element objects.
 
-__Parameters__:
+__Parameters__: None
 
-__Returns__:
+__Returns__: Nil
 
 __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
+automation_object.print_objects
 ```
 ---
 
 ### set_current_screen:
 
-__Description__:
+__Description__:  Mostly for internal use, but if you need to set a screen manually then you can use this method.
 
-__Parameters__:
+__Parameters__: Screen Name (Symbol or String), Window Handle (If new window otherwise default is false)
 
-__Returns__:
+__Returns__: Nil
 
 __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
+automation_object.set_current_screen(:home_screen)
+
+#Set new screen thats in a new window
+automation_object.set_current_screen(:new_window_screen, 'window-handle-id')
 ```
 ---
