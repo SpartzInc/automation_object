@@ -3,8 +3,8 @@ AutomationObject Framework README
 
 ### Table of Contents:
 *    [Putting it together](#putting-it-together)
-*    [Blue Print Docs](#blue-print-docs)
-*    [Framework Doc](#framework-docs)
+*    [Blue Print Documentation](#blue-print-documentation)
+*    [Framework Documentation](#framework-documentation)
 *    [Examples](#examples)
 
 ### Putting it together
@@ -63,7 +63,7 @@ screens:
 ```
 
 
-### Blue Print Docs
+### Blue Print Documentation
 - [Base Level Configurations](blue_prints/base_level_configurations.md)
   - Available base level configurations for blue prints
 - [Screen Level Configurations](blue_prints/screen_level_configurations.md)
@@ -75,7 +75,7 @@ screens:
 - [Possible YAML File Layout](blue_prints/possible_yaml_file_layout.md)
   - Possible YAML file layout to make your blue prints more organized.
 
-### Framework Docs
+### Framework Documentation
 
 - [Initializing the Framework](framework/initializing_the_framework.md)
   - Shows how you would create a new blue print object and subsequently the framework object.
