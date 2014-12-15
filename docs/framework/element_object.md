@@ -13,7 +13,7 @@ Also ElementHash, ElementArray, and ElementGroup objects will contain Element ob
 ###Below are additional methods provided by AutomationObject:
 *    [content](#content)
 *    [collides_with_element?](#collides_with_element)
-*    [exists?](#exists?)
+*    [exists?](#exists)
 *    [get_box_coordinates](#get_box_coordinates)
 *    [get_element_center](#get_element_center)
 *    [height](#height)
