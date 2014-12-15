@@ -310,14 +310,29 @@ screens:
 
 __Expecting__: Hash
 
-__Requirements__:
+__Requirements__: Use this to define modals that may exist on a screen.  Typically used for web, good examples would be
+a drop down menu that requires a button to open the modal that contains the menu.
 
-__Description__:
+__Description__:  Modals act exactly like screens
 
 __Example__:
 ```
 base_url: 'http://www.google.com'
 default_screen: 'home_screen'
+screens:
+  home_screen:
+    modals:
+      user_account_menu:
+        elements:
+          close_menu_button:
+            css: '#menu_button'
+            close_modal: true
+    elements:
+      user_menu_button:
+        css: '#menu_button'
+        click:
+          after:
+            show_modal: 'user_account_menu'
 ```
 ---
 
@@ -325,14 +340,31 @@ default_screen: 'home_screen'
 
 __Expecting__: String
 
-__Requirements__:
+__Requirements__:  This is used to check that a screen is actually live?, will throw an error when screen is loaded
+and the requirements are not met.  live? configurations can also be used when no default screen is present, automatic
+screen changes, and possible_screen_changes hook where the framework has to figure out which screen is live.
 
-__Description__:
+__Description__:  This hook can contain both before and after hooks, but the main work is done in the 'elements' sub-key.
+The 'elements' sub-key is an Array in which the screen has to meet those requirements to be live.
 
 __Example__:
 ```
 base_url: 'http://www.google.com'
 default_screen: 'home_screen'
+screens:
+  home_screen:
+    live?:
+      before:
+        sleep: 1
+      elements:
+        - element_name: 'title_text'
+          exists?: true
+          text: 'Home Screen'
+      after:
+        sleep: 1
+    elements:
+      title_text:
+        css: 'h1#title'
 ```
 ---
 
@@ -340,14 +372,32 @@ default_screen: 'home_screen'
 
 __Expecting__: Hash
 
-__Requirements__:
+__Requirements__:  This hook as well as the ones defined below are called when using the screen object methods:
+scroll_up, scroll_down, scroll_left, and scroll_right.  Use before and after hooks to run before and after the method
+is called.
 
-__Description__:
+__Description__:  This is typically used in Apps where you have scrolling that would reset the elements on the screen or
+would change the screen to another.
 
 __Example__:
 ```
-base_url: 'http://www.google.com'
 default_screen: 'home_screen'
+screens:
+  home_screen:
+    scroll_up:
+      before:
+        sleep: 1
+      after:
+        reset_screen: true
+    scroll_right:
+      after:
+        change_screen: 'list_screen'
+    scroll_left:
+      after:
+        change_screen: 'list_screen'
+    scroll_down:
+      after:
+        reset_screen: true
 ```
 ---
 
