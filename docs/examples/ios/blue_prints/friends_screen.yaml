@@ -1,0 +1,18 @@
+screens:
+  friends_screen:
+    before_load:
+      wait_for_elements:
+        - element_name: 'random_button'
+          exists?: true
+          visible?: true
+          name: 'Random Button'
+    elements:
+      menu_button:
+        xpath: '//UIAApplication[1]/UIAWindow[2]/UIANavigationBar[1]/UIAButton[1]'
+        click:
+          after:
+            change_screen: 'menu_screen'
+      friends_list:
+        xpath: '//UIAApplication[1]/UIAWindow[2]/UIATableView[2]/UIATableCell/UIAStaticText[1]'
+      random_button:
+        xpath: '//UIAApplication[1]/UIAWindow[2]/UIANavigationBar[1]/UIAButton[3]'

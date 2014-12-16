@@ -1,0 +1,20 @@
+screens:
+  login_screen:
+    before_load:
+      wait_for_elements:
+        - element_name: 'title_text'
+          exists?: true
+          visible?: true
+          text: 'Login'
+    elements:
+      title_text:
+        xpath: '//UIAApplication[1]/UIAWindow[2]/UIANavigationBar[1]/UIAStaticText[1]'
+      username_field:
+        xpath: '//UIAApplication[1]/UIAWindow[2]/UIATextField[1]'
+      password_field:
+        xpath: '//UIAApplication[1]/UIAWindow[2]/UIATextField[2]'
+      login_button:
+        xpath: '//UIAApplication[1]/UIAWindow[2]/UIAButton[1]'
+        click:
+         after:
+           change_screen: 'home_screen'

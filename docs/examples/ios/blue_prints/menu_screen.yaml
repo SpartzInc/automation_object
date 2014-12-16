@@ -1,0 +1,28 @@
+screens:
+  menu_screen:
+    before_load:
+      wait_for_elements:
+        - element_name: 'friends_button'
+          exists?: true
+          visible?: true
+    elements:
+      menu_button:
+        xpath: '//UIAApplication[1]/UIAWindow[2]/UIANavigationBar[1]/UIAButton[1]'
+        click:
+          after:
+            change_to_previous_screen: true
+      profile_button:
+        xpath: '//UIAApplication[1]/UIAWindow[2]/UIATableView[1]/UIATableCell[2]/UIAStaticText[1]'
+        click:
+          after:
+            change_screen: 'profile_screen'
+      friends_button:
+        xpath: '//UIAApplication[1]/UIAWindow[2]/UIATableView[1]/UIATableCell[3]/UIAStaticText[1]'
+        click:
+          after:
+            change_screen: 'friends_screen'
+      sign_out_button:
+        xpath: '//UIAApplication[1]/UIAWindow[2]/UIATableView[1]/UIATableCell[4]/UIAStaticText[1]'
+        click:
+          after:
+            change_screen: 'login_screen'

@@ -1,0 +1,16 @@
+screens:
+  home_screen:
+    before_load:
+      wait_for_elements:
+        - element_name: 'title_text'
+          exists?: true
+          visible?: true
+          text: 'Home'
+    elements:
+      title_text:
+        xpath: '//UIAApplication[1]/UIAWindow[2]/UIANavigationBar[1]/UIAStaticText[1]'
+      menu_button:
+        xpath: '//UIAApplication[1]/UIAWindow[2]/UIANavigationBar[1]/UIAButton[1]'
+        click:
+          after:
+            change_screen: 'menu_screen'
