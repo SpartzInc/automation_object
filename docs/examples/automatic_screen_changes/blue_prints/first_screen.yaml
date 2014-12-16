@@ -1,0 +1,19 @@
+screens:
+  first_screen:
+    live?:
+      elements:
+        - element_name: 'title_text'
+          exists?: true
+          visible?: true
+    automatic_screen_changes:
+      - 'second_screen'
+    elements:
+      title_text:
+        css: '#screen_one h2'
+      description_test:
+        css: '#screen_one p'
+      next_button:
+        css: '#screen_one .next_button'
+        click:
+          after:
+            change_screen: 'second_screen'

@@ -1,0 +1,25 @@
+screens:
+  third_screen:
+    live?:
+      elements:
+        - element_name: 'title_text'
+          exists?: true
+          visible?: true
+    automatic_screen_changes:
+      - 'fourth_screen'
+      - 'second_screen'
+    elements:
+      title_text:
+        css: '#screen_three h2'
+      description_test:
+        css: '#screen_three p'
+      previous_button:
+        css: '#screen_three .previous_button'
+        click:
+          after:
+            change_screen: 'second_screen'
+      next_button:
+        css: '#screen_three .next_button'
+        click:
+          after:
+            change_screen: 'fourth_screen'
