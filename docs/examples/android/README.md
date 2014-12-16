@@ -11,8 +11,8 @@ __Built Using__:
 *  Appium 1.3.3
 
 Some Additional Links:
-[Appium Android Documentation](https://github.com/appium/ruby_lib/blob/master/docs/android_docs.md)
-[Sample Android App Used](https://github.com/stephanenicolas/RoboDemo)
+*  [Appium Android Documentation](https://github.com/appium/ruby_lib/blob/master/docs/android_docs.md)
+*  [Sample Android App Used](https://github.com/stephanenicolas/RoboDemo)
 
 ### Installation and Execution
 

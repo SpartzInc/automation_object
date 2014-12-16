@@ -14,8 +14,8 @@ __Built Using__:
 *  iPhone 6
 
 Some Additional Links:
-[Appium iOS Documentation](https://github.com/appium/ruby_lib/blob/master/docs/ios_docs.md)
-[Sample iOS App Used](https://github.com/aryaxt/iOS-Slide-Menu)
+*  [Appium iOS Documentation](https://github.com/appium/ruby_lib/blob/master/docs/ios_docs.md)
+*  [Sample iOS App Used](https://github.com/aryaxt/iOS-Slide-Menu)
 
 ### Installation and Execution
 

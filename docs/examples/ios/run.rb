@@ -25,7 +25,7 @@ begin
   automation_object.menu_screen.menu_button.click
 
   #Then lets test automatic screen routing
-  15.times do
+  5.times do
     random_number = rand(0..4)
 
     case random_number
