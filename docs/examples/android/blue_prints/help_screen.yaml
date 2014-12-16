@@ -1,0 +1,24 @@
+screens:
+  help_screen:
+    before_load:
+      wait_for_elements:
+        - element_name: 'never_show_again_checkbox'
+          exists?: true
+          visible?: true
+        - element_name: 'never_show_again_text'
+          exists?: true
+          visible?: true
+          text: 'Never show again'
+    elements:
+      never_show_again_checkbox:
+        xpath: '//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.CheckBox[1]'
+      never_show_again_text:
+        xpath: '//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]'
+      ok_button:
+        xpath: '//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.Button[1]'
+        click:
+          after:
+            wait_for_elements:
+              - element_name: 'ok_button'
+                exists?: false
+            change_screen: 'home_screen'
