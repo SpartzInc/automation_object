@@ -6,8 +6,8 @@ AutomationObject::debug_mode = true
 AutomationObject::BluePrint::base_directory = File.expand_path(File.dirname(__FILE__))
 
 #Start up Appium driver on port 4723
-opts = { caps: { platformName: :android, deviceName: :android,
-                 app: File.join(File.expand_path(File.dirname(__FILE__)), '/robodemo-sample-1.0.1.apk') } }
+opts = {caps: {platformName: :android, deviceName: :android,
+               app: File.join(File.expand_path(File.dirname(__FILE__)), '/robodemo-sample-1.0.1.apk')}}
 Appium::Driver.new(opts).start_driver
 #Appium sets itself as $driver
 

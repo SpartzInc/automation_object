@@ -6,8 +6,8 @@ AutomationObject::debug_mode = true
 AutomationObject::BluePrint::base_directory = File.expand_path(File.dirname(__FILE__))
 
 #Start up Appium driver on port 4723
-opts = { caps: { platformName: :ios, deviceName: 'iPhone 6',
-                 app: File.join(File.expand_path(File.dirname(__FILE__)), '/SlideMenu.ipa') } }
+opts = {caps: {platformName: :ios, deviceName: 'iPhone 6',
+               app: File.join(File.expand_path(File.dirname(__FILE__)), '/SlideMenu.ipa')}}
 Appium::Driver.new(opts).start_driver
 #Appium sets itself as $driver
 
@@ -41,12 +41,6 @@ begin
         automation_object.profile_screen
     end
   end
-
-
-
-
-
-
 
 
 ensure
