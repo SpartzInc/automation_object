@@ -91,6 +91,8 @@ screens:
 
 ### Examples
 
+If you need an example of something, let me know; I will try to get it in here.
+
 - [Simple example](examples/simple)
   - Small example to get your feet wet
 - [Android example](examples/android)
@@ -101,15 +103,8 @@ screens:
   - Shows how to use debugging to figure out what might have gone wrong
 - [Views example](examples/views)
   - Shows how to use views, which help reduce the size of blue prints
-- [Elements example](examples/elements)
-  - Shows the different types of configurations of elements available and how to use them
 - [Hooks example](examples/hooks)
   - Shows how to include hooks into framework events to create stable tests
-- [iFrames example](examples/iframes)
-  - Shows how to implement iframe interactions
-- [Modals example](examples/modals)
-  - Shows how to use modals, which can be used for dropdowns and other popups that may occur with interactions
-- [Multiple windows example](examples/multiple_windows)
   - Demonstrates how multiple windows are handled within the framework
 - [No default screen example](examples/no_default_screen)
   - Sometimes sites/apps don't have a default screen.  This shows you how to implement that in blue prints
@@ -118,9 +113,6 @@ screens:
   currently live.
 - [Automatic screen changes example](examples/automatic_screen_changes)
   - Shows how to implement automatic screen changes and what use cases this may be required
-- [Automatic onload modals example](examples/automatic_onload_modals)
-  - Shows how to implement automatic onload modals.  This is mainly to get rid of ads or other random modals that may occur on certain
-  screens.
 - [Throttle Driver Interactions](examples/throttle_driver_interactions)
   - If you are having issues with browsers/apps/drivers crashing, then throttling may help stabilize tests.
   This example will show you how to throttle driver and element interactions

@@ -1,0 +1,30 @@
+screens:
+  second_screen:
+    before_load:
+      wait_for_elements:
+        - element_name: 'title_text'
+          exists?: true
+          visible?: true
+    elements:
+      title_text:
+        css: '#screen_two h2'
+      description_test:
+        css: '#screen_two p'
+      previous_button:
+        css: '#screen_two .previous_button'
+        click:
+          after:
+            wait_for_elements:
+              - element_name: 'progress_bar'
+                visible?: false
+            change_screen: 'first_screen'
+      next_button:
+        css: '#screen_two .next_button'
+        click:
+          after:
+            wait_for_elements:
+              - element_name: 'progress_bar'
+                visible?: false
+            change_screen: 'third_screen'
+      progress_bar:
+        css: '#progress'

@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Simple Example</title>
+    <title>Hooks Example</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
@@ -27,10 +27,24 @@
 
             unbindButtons();
 
-            $(current_screen_selector).hide();
-            $(next_screen_selector).show();
+            $(current_screen_selector).fadeOut("fast", function () {
+                var current_progress = 0;
+                var $progress = $('#progress');
+                var $progress_bar = $('#progress .progress-bar');
 
-            bindButtons();
+                $progress.show();
+
+                $progress_bar.animate({
+                    width: $progress.width(),
+                    duration: "fast"
+                }, function () {
+                    $(next_screen_selector).fadeIn('slow', function () {
+                        bindButtons()
+                        $progress_bar.width(0);
+                        $progress.hide();
+                    });
+                });
+            });
         }
 
         function unbindButtons() {
@@ -69,15 +83,11 @@
     </style>
 </head>
 <body>
-<h1 id="page_title">Views Example</h1>
+<h1>Hooks Example</h1>
 
-<p id="page_description">Views example will give you an idea on how to use views. Views will basically allow you not to
-    repeat yourself
-    screen to screen by grouping commonalities into views and including those views in screens.<br/>
+<p>This example has a bit more complicated UI in which we will need to implement hooks in order to keep it from
+    failing.</p>
 
-    I created to views: page_header_view.yaml and screen_before_load.yaml which contains the page header text which
-    never
-    changes and before load hooks that are common to each of those screens.</p>
 
 <div class="panel panel-default" style="background-color: #0085CA; width: 830px; height: 500px; position: relative;">
     <div class="panel-body">
