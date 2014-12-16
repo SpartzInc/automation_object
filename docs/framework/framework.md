@@ -5,6 +5,7 @@ Framework object will contain all the objects dynamically created based on the b
 
 ###Framework object instance methods:
 *    [driver_object](#driver_object)
+*    [get_current_screen](#get_current_screen)
 *    [on](#on)
 *    [print_objects](#print_objects)
 *    [set_current_screen](#set_current_screen)
@@ -23,6 +24,22 @@ __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
 automation_object.driver_object.execute_script('return document.readyState;')
+
+```
+---
+
+### get_current_screen:
+
+__Description__: Use this method to get the current screen
+
+__Parameters__: None
+
+__Returns__: Symbol
+
+__Example__:
+```
+automation_object = AutomationObject::Framework.new(driver, blue_prints)
+puts automation_object.get_current_screen #:home_screen , or whatever screen maybe current
 
 ```
 ---

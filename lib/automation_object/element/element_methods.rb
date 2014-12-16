@@ -74,15 +74,6 @@ module AutomationObject
     end
 
     def exists?
-      if self.element_object
-        begin #Just do a quick check to make sure no errors will be raised
-          self.displayed?
-          return true
-        rescue Exception
-          self.reset_element
-        end
-      end
-
       selector_params = self.get_selector_params(self.configuration)
       element_exists = self.driver_object.exists?(selector_params[:selector_method], selector_params[:selector])
 
