@@ -1,0 +1,15 @@
+screens:
+  first_screen:
+    included_views:
+      - 'page_header_view'
+      - 'screen_before_load_view'
+    elements:
+      title_text:
+        css: '#screen_one h2'
+      description_test:
+        css: '#screen_one p'
+      next_button:
+        css: '#screen_one .next_button'
+        click:
+          after:
+            change_screen: 'second_screen'

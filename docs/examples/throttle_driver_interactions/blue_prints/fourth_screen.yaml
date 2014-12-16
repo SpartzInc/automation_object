@@ -2,9 +2,9 @@ screens:
   fourth_screen:
     elements:
       title_text:
-        css: '#screen_one h2'
+        css: '#screen_four h2'
       description_test:
-        css: '#screen_one p'
+        css: '#screen_four p'
       previous_button:
         css: '#screen_four .previous_button'
         click:

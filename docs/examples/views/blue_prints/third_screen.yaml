@@ -1,5 +1,8 @@
 screens:
   third_screen:
+    included_views:
+      - 'page_header_view'
+      - 'screen_before_load_view'
     elements:
       title_text:
         css: '#screen_three h2'

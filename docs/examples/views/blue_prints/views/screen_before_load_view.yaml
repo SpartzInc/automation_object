@@ -1,0 +1,7 @@
+views:
+  screen_before_load_view:
+    before_load:
+      wait_for_elements:
+        - element_name: 'title_text'
+          exists?: true
+          visible?: true

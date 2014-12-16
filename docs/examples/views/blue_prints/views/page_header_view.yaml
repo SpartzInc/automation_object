@@ -1,0 +1,7 @@
+views:
+  page_header_view:
+    elements:
+      page_title:
+        css: 'h1#page_title'
+      page_description:
+        css: 'p#page_description'
