@@ -10,7 +10,7 @@ AutomationObject Framework README
 ### Putting it together
 
 AutomationObject Framework allows you to create YAML configurations to define UI on a website or app.
-You will put all YAML files into a single folder to represent one website/app version.  YAML files are just combined
+You can put all YAML files into a single folder to represent one website/app version.  YAML files are just combined
 into one large Hash object.
 
 Code for getting YAML configurations and converting into one single blueprint:

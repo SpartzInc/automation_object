@@ -121,12 +121,13 @@ end
 
 __Expecting__: Hash
 
-__Requirements__:  Hook that runs once a screen before a screen has loaded.  Works slightly differently then other hooks,
+__Requirements__:  Hook that runs before a screen is loaded.  Works slightly differently then other hooks,
 there is no before or after sub-keys.
 
 __Description__:  Use to wait for screen to be ready before you interact with it or run the live? configuration.
 
-__Important__: There is no __before__ or __after__ sub-keys on this hook.
+__Important__: There is no __before__ or __after__ sub-keys on this hook.  Every other hooks uses the before and after
+keys.
 
 __Example__:
 ```
@@ -194,8 +195,8 @@ automation_object.about_screen.dismiss
 
 __Expecting__: Hash
 
-__Requirements__: xPath's on sub-elements of the group are required for this to work properly.  This is because it's
-easier to combine xPaths to form each group.
+__Requirements__: xPath's on the elements are required for this.  This is because it's
+easier to combine xPaths and indexes to form each group.
 
 __Description__:  Use this when you need to test groups of elements in a pragmatic way.  At our company we use this to
 test groups of list links that include an image, link text, as well as the author.
@@ -262,11 +263,15 @@ __Ruby example of above configuration__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
 
-puts automation_object.home_screen.title_text #Element
+#Element
+puts automation_object.home_screen.title_text
+
+#ElementArray
 automation_object.home_screen.links_array.each { |link_element|
   puts link.text
 }
 
+#ElementHash
 automation_object.home_screen.links_hash.each { |link_key, link_element|
   puts link_key
   puts link_element.text

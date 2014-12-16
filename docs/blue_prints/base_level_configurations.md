@@ -82,7 +82,7 @@ __Expecting__: Hash
 
 __Description__:
 
-This hash will contain all the defined screens that you with to automate.
+This hash will contain all the defined screens that you will need to automate.
 
 __Example__:
 ```
@@ -111,7 +111,7 @@ __Default__: 0
 __Description__:
 
 Can be used to help build automation configurations at the beginning by adding a sleep every time you change a screen.
-When no waiting hooks exist this will help keep the automation from breaking or raising errors.  Try to use hooks
+When no waiting hooks exist, this will help keep the automation from breaking or raising errors.  Try to use hooks
 to make your automation less brittle and faster.
 
 __Example__:
@@ -131,7 +131,7 @@ __Expecting__: Hash
 
 __Description__: If you are having issues when interacting with the driver too quickly, you can throttle driver
 methods via this configuration.  Then each method that is called will at the minimum take the time you define before
-returning.  Time is defined in seconds
+returning.  Time is defined in seconds.
 
 __Example__:
 ```
@@ -152,7 +152,7 @@ __Expecting__: Hash
 
 __Description__: If you are having issues when interacting with elements too quickly, you can throttle elements
 methods via this configuration.  Then each method that is called will at the minimum take the time you define before
-returning.  Time is defined in seconds
+returning.  Time is defined in seconds.
 
 __Example__:
 ```
@@ -171,8 +171,8 @@ throttle_element_methods:
 
 __Expecting__: Hash
 
-__Description__: Use views when you have common elements between screens.  This can help keep your configurations DRY
-and not have to repeat yourself throughout each YAML file.  Views will have all the same configurations available as
+__Description__: Use views when you have commonalities between screens.  This can help keep your configurations DRY
+and not have to repeat yourself throughout each YAML file.  Views can have all the same configurations available as
 [screens](screen_level_configurations.md).
 
 __Example__:
