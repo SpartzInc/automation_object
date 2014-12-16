@@ -1,0 +1,22 @@
+screens:
+  home_screen:
+    element_groups:
+      links_group_example: #Only allow use of xpath's because of ease of getting specific index
+        xpath: '//div[@id="element_group_example"]/ul/li'
+        sub_elements:
+          link:
+            xpath: '/a'
+          link_description:
+            xpath: '/p'
+    elements:
+      page_title:
+        css: 'h1#title'
+      page_description:
+        css: 'p#description'
+      links_array_example:
+        css: '#element_array_example li a'
+        multiple: true
+      links_hash_example:
+        css: '#element_hash_example li a'
+        multiple: true
+        define_elements_by: 'href'

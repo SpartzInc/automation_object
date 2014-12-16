@@ -101,6 +101,8 @@ If you need an example of something, let me know; I will try to get it in here.
   - iOS example to show you how to use Appium, iOS, and AutomationObject
 - [Debugging example](examples/debugging)
   - Shows how to use debugging to figure out what might have gone wrong
+- [Elements example](examples/elements)
+  - Shows how to use elements, element groups, element hashes, and element arrays.
 - [Views example](examples/views)
   - Shows how to use views, which help reduce the size of blue prints
 - [Hooks example](examples/hooks)

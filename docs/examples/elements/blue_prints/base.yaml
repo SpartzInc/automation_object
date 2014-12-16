@@ -1,0 +1,2 @@
+default_screen: 'home_screen'
+base_url: 'https://google.com' #Will change to file path of site.html, not typical implementation
