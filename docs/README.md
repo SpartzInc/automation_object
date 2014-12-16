@@ -95,6 +95,8 @@ screens:
   - Small example to get your feet wet
 - [Android example](examples/android)
   - Android example to show you how to use Appium, Android, and AutomationObject
+- [iOS example](examples/ios)
+  - iOS example to show you how to use Appium, iOS, and AutomationObject
 - [Debugging example](examples/debugging)
   - Shows how to use debugging to figure out what might have gone wrong
 - [Views example](examples/views)
