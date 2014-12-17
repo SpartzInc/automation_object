@@ -7,7 +7,7 @@ but if you wanted to run this real quick to see how the debugging messages look 
 
 1. cd into this directory
 2. Run command 'bundle install' to install the gems needed
-3. Run command 'ruby run.rb' to run the already script to interact with the UI
+3. Run command 'ruby run.rb' to run the script already made to interact with the UI
 4. Press enter to quit
 
 ### play.rb usage
