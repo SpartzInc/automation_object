@@ -2,18 +2,20 @@
 
 YAML Configuration Based Dynamic DSL Framework for UI automation (Selenium/Appium)
 
-Allows for the usage of YAML configuration files to define the UI of your app or website you wish to automate.  The configurations
-(blue prints) in turn help create a dynamic DSL framework that allows you to automate your app/website.  You can define
-screens, modals, elements, and hooks which help you effectively automate while keeping your code DRY.
+Allows for the usage of YAML configuration files to define the UI of a website or app which in turn can be used to create
+a dynamic DSL framework that controls the automation.  By defining screens, modals, elements, hooks, you can effectively
+issue commands to the dynamic DSL framework API which in turn controls the automation and does the heavy lifting work with the
+Selenium or Appium driver.
 
 ### Features
 
 1. Use YAML configuration files to represent UI of a website or app
-2. Add all the UI relationships you need to create an effective dynamic DSL framework
+2. Add all the UI relationships needed to create an effective dynamic DSL framework
 3. Control waiting and sleeping conditions on screen/element interactions using hooks for less brittle UI testing
 4. Use the DSL framework to effectively control your automation
 5. Automatic routing between screens, modals, windows, iframes enables less code intensive automation.
-6. Enables DRY automation test development by storing UI representations in configuration files instead of code
+6. Enables DRY automation test development by storing UI representations in configuration files instead of code and
+keeps the complex automation code internal to the API.
 
 ### Fair Warning
 
