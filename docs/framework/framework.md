@@ -2,8 +2,8 @@ Framework Object Documentation
 ----
 
 Framework object is the dynamic DSL framework that will allow you to automate your app/website.
-The object will contain all the objects you have defined in your blue prints (YAML files) as well as the instance methods
-defined below.
+The object will contain all the objects you have defined in your blue prints (YAML files) as well as the
+[instance methods](#framework-instance-methods) defined below.
 
 ###Accessing screen objects:
 
