@@ -78,7 +78,7 @@ puts automation_object.get_current_screen #:home_screen , or whatever screen may
 __Description__: Event emitter, only has one usage right now, may have more in the future.  If you would like to bind
 on the change_screen event you can use this method.  Implements [EventEmitter](http://shokai.github.io/event_emitter/)
 
-__Parameters__: Symbol (event name)
+__Parameters__: Symbol (event name), Proc (code to run when event is emitted)
 
 __Example__:
 ```
