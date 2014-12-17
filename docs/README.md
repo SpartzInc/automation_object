@@ -1,7 +1,7 @@
 AutomationObject README
 ----
 
-The documentation has been broken up into a few different parts.  I start off with a small example so that you may have
+The documentation has been broken up into a few different parts.  I'll start off with a small example so that you may have
 an understanding of what this gem does.  Then there is the blue prints documentation which describes all of the ways you
 can set up the YAML configuration files.  The framework documentation shows how you would create and use the dynamic DSL
 framework.  Finally there are a bunch of examples at the bottom to show how to implement a variety of features offered
