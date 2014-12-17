@@ -200,7 +200,7 @@ home_screen:
 __Ruby Example with Above Blueprints__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
-#No need to access iframe_element, accessing element_in_iframe will automatically switch to the iframe
+#No need to access iframe_element, using element_in_iframe will automatically switch to the iframe
 automation_object.home_screen.element_in_iframe.text
 ```
 ---
