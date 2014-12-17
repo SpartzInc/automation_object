@@ -29,7 +29,7 @@ __Requirements__: Hook key used when a screen is also a prompt.  This will occur
 __Description__:  Hook configuration to be run when using the accept method on the screen object.  When accepting the prompt,
 the accept hook will be run before and after the driver method is run.
 
-__Available Before/After Sub-Keys__: [Hook Level Configurations](hook_level_configurations.md)
+__Available Before/After Hook Sub-Keys__: [Hook Level Configurations](hook_level_configurations.md)
 
 __App Blueprint Example__:
 ```
@@ -135,7 +135,7 @@ __Description__:  Use to wait for screen to be ready before allowing interaction
 __Important__: There is no __before__ or __after__ sub-keys on this hook.  Every other hook uses the before and after
 sub-keys.
 
-__Available Sub-Keys__: [Hook Level Configurations](hook_level_configurations.md)
+__Available Hook Sub-Keys__: [Hook Level Configurations](hook_level_configurations.md)
 
 __Example__:
 ```
@@ -172,7 +172,7 @@ __Requirements__: Hook key used when a screen is also a prompt.  This will occur
 __Description__:  Hook configuration to be run when using the dismiss method on the screen object.  When dismissing the prompt
 the dismiss hook will be run before and after the method is run.
 
-__Available Before/After Sub-Keys__: [Hook Level Configurations](hook_level_configurations.md)
+__Available Before/After Hook Sub-Keys__: [Hook Level Configurations](hook_level_configurations.md)
 
 __App Blueprint Example__:
 ```
@@ -362,7 +362,7 @@ __Description__: live? configurations can be used when no default screen is pres
 and [possible_screen_changes](hook_level_keys.md#possible_screen_changes] hook where the framework has to figure out which screen is live.
 Also if you want to throw errors when you not on the screen you expected you would use this.
 
-__Available Before/After Sub-Keys__: [Hook Level Configurations](hook_level_configurations.md)
+__Available Before/After Hook Sub-Keys__: [Hook Level Configurations](hook_level_configurations.md)
 
 __Example__:
 ```
@@ -396,7 +396,7 @@ is called.
 __Description__:  This is typically used in Apps where you have scrolling that would reset the elements on the screen or
 would change the screen to another.
 
-__Available Before/After Sub-Keys__: [Hook Level Configurations](hook_level_configurations.md)
+__Available Before/After Hook Sub-Keys__: [Hook Level Configurations](hook_level_configurations.md)
 
 __Example__:
 ```
