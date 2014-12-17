@@ -1,7 +1,7 @@
 Element Level Configurations
 ----
 
-This document will cover the available keys and values that may be used at the base level.
+This document will cover the available keys and values that may be used at the element level.
 
 ### Table of Contents:
 
@@ -21,10 +21,13 @@ This document will cover the available keys and values that may be used at the b
 
 __Expecting__: Hash
 
-__Requirements__:  Hook will need to be a valid available element method.  Can be attached to any method you
-might use.  When that method is run then the hook will run accordingly.
+__Requirements__:  Element methods may be used to define hooks.  Element method will need to be a method available
+on a Selenium/Appium element object or a method extension by the AutomationObject framework [element object](../framework/element_object.md).
 
-__Description__:  Use hooks on elements when you expect actions to occur when using a certain element method.
+__Description__:  Use hooks on element methods when you expect that those actions will change the state of the automation or
+that you need to wait for certain conditions to exist before/after running that method.
+
+__Available Before/After Hook Sub-Keys__: [Hook Level Configurations](hook_level_configurations.md)
 
 __Example__:
 ```
@@ -58,7 +61,7 @@ __Expecting__: String
 
 __Requirements__: Valid css selector to grab the element(s)
 
-__Description__:  Use this or xpath to define where you element is going to be on the page so that the framework
+__Description__:  Use this or [xpath](#xpath) to define where you element is going to be on the page so that the framework
 can work with and supply you with the element.
 
 __Example__:
@@ -69,12 +72,12 @@ screens:
   home_screen:
     elements:
       title:
-        css: 'div.header h1#title'
+        css: 'div.header h1#title' #Element
   list_screen:
     elements:
       links:
         multiple: true
-        css: 'div.links_container a'
+        css: 'div.links_container a' #ElementArray
 ```
 ---
 
@@ -82,12 +85,13 @@ screens:
 
 __Expecting__: Hash
 
-__Requirements__: Defining element_method and evaluate properly.  element_method needs to be a valid available element
-method to run ruby code against.  evaluate needs to be valid ruby code.
+__Requirements__: Defining element_method and evaluate properly are important.
+element_method needs to be a valid available [element method](../framework/element_object.md) to run ruby code against.
+evaluate needs to be valid ruby code.  The evaluate code is run against the method you supply in element_method.
 
-__Description__: Below ruby code is run when
-
-
+__Description__: You can use custom methods to create a method on an element object that might not otherwise exist.
+By using one of the already available element methods and ruby code under evaluate you can create a dynamic method on that
+object.
 
 __Example__:
 ```
@@ -103,9 +107,10 @@ home_screen:
           element_method: 'href'
           evaluate: 'match(/^.+\/lists\/(\d+).+$/)[1].to_i'
 ```
-Code run when requesting the custom method:
+Backend code that runs when requesting the custom method:
 ```
 return element_object.href.evaluate('match(/^.+\/lists\/(\d+).+$/)[1].to_i')
+# or return element_object.href.match(/^.+\/lists\/(\d+).+$/)[1].to_i
 ```
 
 ---
@@ -114,7 +119,8 @@ return element_object.href.evaluate('match(/^.+\/lists\/(\d+).+$/)[1].to_i')
 
 __Expecting__: Hash
 
-__Requirements__: Element is multiple, start and stop are defined as integers.  1 is the beginning.
+__Requirements__: Element is multiple, start and stop are defined as integers.  1 is the beginning, was unsure whether to
+start at 0 or 1 because indexes for xPaths/CSS start at 1; so I figured on just starting at 1.
 
 __Description__:  Use this if you need to work with an artificially smaller set of elements.
 
@@ -137,11 +143,11 @@ screens:
 
 __Expecting__: String
 
-__Requirements__: Value is either a valid element method or defined custom method
+__Requirements__: Value is either a valid [element method](../framework/element_object.md) or defined custom method.
 
 __Description__:
 
-Use this configuration to create Element Hashes instead of Element Arrays.  When the elements are loaded, the framework
+Use this configuration to create an element Hash instead of element Array.  When the elements are loaded, the framework
 will run each element method and use the return as the key for that element.
 
 __Example__:
@@ -174,8 +180,9 @@ __Requirements__: Value must be a defined element in the same screen or modal
 
 __Description__:
 
-Use this to define elements that happen to reside in iframes.  Will automatically switch between iframe and default
-content when accessing element in iframe and elements in the default content.
+Use this to define elements that happen to reside in iframes.  Framework will automatically switch between iframe and default
+content when accessing element in iframe and other elements in the default content.  So there is no need to script any code
+for iframes except in the configurations.
 
 __Example__:
 ```
@@ -195,9 +202,9 @@ home_screen:
 
 __Expecting__: TrueClass
 
-__Requirements__: Expects only true otherwise don't define multiple, very unnecessary.
+__Requirements__: Expects only true otherwise don't define multiple, unnecessary to do so.
 
-__Description__: Use this when you need to define sets of elements.  Elements can be Element Hashes or Element Arrays.
+__Description__: Use this when you need to define an Array of elements.  Elements can be Element Hashes or Element Arrays.
 Use [define_elements_by](#define_elements_by) when you want to have element hashes instead of arrays.
 
 __Example__:
@@ -238,7 +245,7 @@ screens:
         multiple: true
         css: 'a'
         remove_duplicates: 'href'
-      another_multiple_links_example:
+      another_multiple_links_example: #Use custom method instead
         multiple: true
         xpath: '//a'
         remove_duplicates: 'list_id'
