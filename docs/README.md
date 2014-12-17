@@ -12,9 +12,9 @@ AutomationObject Framework README
 AutomationObject Framework allows you to create YAML configurations to define UI on a website or app.
 You can put all YAML files into a single folder to represent a website or app.  YAML files are then merged
 into a single Hash object.  Using the Hash object you can create a dynamic DSL framework to that reflects your
-configuration and automation your app or website.
+configuration and automate your app or website.
 
-Code for loading YAML configuration files in a folder to be merged into one single blueprint (Hash):
+Code for loading YAML configuration files in a folder to be merged into a single blueprint object (Hash):
 ```
 require 'automation_object'
 
@@ -39,7 +39,7 @@ automation_object.search_screen.search_button.click
 ```
 
 As you can see from the small hypothetical example above, you can define screens, elements in YAML configurations and
-work with the elements through AutomationObject::Framework instance.
+work with the elements through AutomationObject::Framework instance object.
 
 Here is the combined simple YAML configuration for the hypothetical example above:
 ```
@@ -65,8 +65,7 @@ screens:
         xpath: '//xpath/to/element'
 ```
 
-
-### Blue Print Documentation
+### Blue Prints Documentation (YAML)
 - [Base Level Configurations](blue_prints/base_level_configurations.md)
   - Available base level configurations for blue prints
 - [Screen Level Configurations](blue_prints/screen_level_configurations.md)
