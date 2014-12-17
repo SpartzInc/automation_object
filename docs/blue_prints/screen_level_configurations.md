@@ -325,10 +325,10 @@ screens:
 
 __Expecting__: Hash
 
-__Requirements__: Use this to define modals that may exist on a screen.  Typically used for web, good examples would be
-a drop down menu that requires a button to open the modal that contains the menu.
+__Requirements__: Use this to define modals that may exist on a screen.
 
-__Description__:  Modals act exactly like screens
+__Description__:  Modals act exactly like screens, but are contained within screens.  Typically used for web,
+a good example would be a drop down menu that requires a button to open the modal that contains the menu.
 
 __Example__:
 ```
