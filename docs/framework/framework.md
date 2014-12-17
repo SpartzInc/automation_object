@@ -2,7 +2,34 @@ Framework Object Documentation
 ----
 
 Framework object is the dynamic DSL framework that will allow you to automate your app/website.
-The object will contain all the objects you have defined in your blue prints (YAML files)
+The object will contain all the objects you have defined in your blue prints (YAML files) as well as the instance methods
+defined below.
+
+###Accessing screen objects:
+
+Accessing screen objects is fairly simple and depends on how you define your YAML configurations.  The two examples below
+will show you how to access those objects.  When accessing a screen that is not currently live, the framework will try
+to automatically route to that screen.
+
+__Blue Prints Example (YAML)__:
+```
+default_screen: 'home_screen'
+screens:
+  home_screen:
+    #Any screen configurations here
+  list_screen:
+    #Add so on
+```
+
+__Accessing Screen Objects in the Framework Object (Using Above Blue Prints)__:
+```
+automation_object = AutomationObject::Framework.new(driver, blue_prints)
+automation_object.home_screen #Gives you the screen object
+
+#Since we didn't do anything to change to the list screen
+#When I call the next command, the framework will try to automatically route to that screen
+automation_object.list_screen
+```
 
 ###Framework instance methods:
 *    [driver_object](#driver_object)
