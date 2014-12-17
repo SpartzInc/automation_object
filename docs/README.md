@@ -10,10 +10,11 @@ AutomationObject Framework README
 ### Putting it together
 
 AutomationObject Framework allows you to create YAML configurations to define UI on a website or app.
-You can put all YAML files into a single folder to represent one website/app version.  YAML files are just combined
-into one large Hash object.
+You can put all YAML files into a single folder to represent one website/app version.  YAML files are merged
+into a single Hash object.  Using the Hash object you can create a dynamic DSL framework to that reflects your
+configuration and automation your app or website.
 
-Code for getting YAML configurations and converting into one single blueprint:
+Code for loading YAML configuration files to be merged into one single blueprint (Hash):
 ```
 require 'automation_object'
 
@@ -24,7 +25,8 @@ AutomationObject::BluePrint::base_directory = '/base/blue_print/directory'
 blue_prints = AutomationObject::BluePrint.new('/path/to/specific/blueprints')
 ```
 
-Then you will take the merged Hash file and input the Selenium or Appium driver into AutomationObject::Framework:
+Then in turn you can take that Hash object and create a new dynamic framework representing your configuration along
+with your Appium or Selenium driver:
 ```
 #...continued from above
 driver = Selenium::WebDriver.for :chrome
