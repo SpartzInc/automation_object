@@ -21,8 +21,9 @@ This document will cover the available keys and values that may be used at the e
 
 __Expecting__: Hash
 
-__Requirements__:  Element methods may be used to define hooks.  Element method will need to be a method available
-on a Selenium/Appium element object or a method extension by the AutomationObject framework [element object](../framework/element_object.md).
+__Requirements__:  Element methods may be used to define hooks.  The defined method hook in the configuration
+will need to be a method available on a Selenium/Appium element object, extension by the Framework
+[element object](../framework/element_object.md), or a [custom_method](#custom_methods)
 
 __Description__:  Use hooks on element methods when you expect that those actions will change the state of the automation or
 that you need to wait for certain conditions to exist before/after running that method.
