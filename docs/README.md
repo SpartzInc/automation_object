@@ -51,7 +51,7 @@ require 'automation_object'
 #Set base directory so you don't have to specify full folder path each time
 AutomationObject::BluePrint::base_directory = '/base/blue_print/directory'
 
-#Returns merged Hash
+#Returns merged Hash object
 blue_prints = AutomationObject::BluePrint.new('/path/to/specific/blueprints')
 ```
 
