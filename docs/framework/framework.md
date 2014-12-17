@@ -8,6 +8,7 @@ Framework object will contain all the objects dynamically created based on the b
 *    [get_current_screen](#get_current_screen)
 *    [on](#on)
 *    [print_objects](#print_objects)
+*    [quit](#quit)
 *    [set_current_screen](#set_current_screen)
 
 ### driver_object:
@@ -75,6 +76,21 @@ __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
 automation_object.print_objects
+```
+---
+
+### quit:
+
+__Description__: Use this to quit the AutomationObject framework as well as the driver
+
+__Parameters__: None
+
+__Returns__: Nil
+
+__Example__:
+```
+automation_object = AutomationObject::Framework.new(driver, blue_prints)
+automation_object.quit #quits driver too
 ```
 ---
 

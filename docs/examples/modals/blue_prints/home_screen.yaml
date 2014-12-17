@@ -1,0 +1,31 @@
+screens:
+  home_screen:
+    modals:
+      fancybox_modal:
+        before_load:
+          wait_for_elements:
+            - element_name: 'close_button'
+              exists?: true
+              visible?: true
+        elements:
+          close_button:
+            css: 'a.fancybox-close'
+            click:
+              after: #Wait for FancyBox to go away before continuing
+                wait_for_elements:
+                  - element_name: 'close_button'
+                    exists?: false
+                close_modal: true
+    elements:
+      group_one_images:
+        css: 'p#group_one_images a'
+        multiple: true
+        click:
+          after:
+            show_modal: 'fancybox_modal'
+      group_two_images:
+        css: 'p#group_two_images a img'
+        multiple: true
+        click:
+          after:
+            show_modal: 'fancybox_modal'

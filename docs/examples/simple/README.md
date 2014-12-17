@@ -1,7 +1,7 @@
 ## Simple Example
 
 This example will provide some of the basic features in AutomationObject without
-cluttering you with too much information.
+cluttering you with too much code.
 
 ### Installation and Execution
 

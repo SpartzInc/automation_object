@@ -1,12 +1,8 @@
-## Throttle Driver Interactions Example
+## Modals Example
 
-This is example is copied over from the Simple example, with the debugging turned on and some of the driver and element
-methods throttled.
-
-Take a look at the blue_prints/base.yaml to see how you would throttle methods on the driver or element.
-
-Also debugging is turned on so you can see the output on how long it takes to complete those methods.  The amount of time
-at a minimum should be what is set in the blue prints.
+This example will show you how to use modals.  I'm using [FancyBox](http://fancybox.net/) demo html file
+to demonstrate how you would use modals in a practical sense.  I modified the original demo html file to be a bit shorter.
+The blue prints/framework will be able to properly open and close the modals and understand which state it is currently in.
 
 ### Installation and Execution
 

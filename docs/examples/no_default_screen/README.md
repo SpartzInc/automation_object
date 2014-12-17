@@ -2,7 +2,7 @@
 
 This example will demonstrate how to set up blue prints when there is no initial default screen.
 The framework then will rely on live? configurations of screens to figure out which screen is the initial screen
-and will set it accordingly.  Since the is automatic screen routing, it is still safe to ask for the first screen
+and will set it accordingly.  Since there is automatic screen routing, it is still safe to ask for the first screen
 even if you are on the fourth screen as long as there is a way to get there in the blue prints.
 
 ### Installation and Execution

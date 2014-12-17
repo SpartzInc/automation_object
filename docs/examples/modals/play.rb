@@ -13,23 +13,27 @@ begin
 
   automation_object = AutomationObject::Framework.new(driver, blue_prints)
 
-  #Start on first screen and print our page header view elements then repeat on each screen
-  ap automation_object.first_screen.page_title.text
-  ap automation_object.first_screen.page_description.text
+  #Input commands like:
+  #automation_object.first_screen.next_button.click
+  #automation_object.second_screen.title_text.text
 
-  ap automation_object.second_screen.page_title.text
-  ap automation_object.second_screen.page_description.text
+  loop do
+    puts 'Input the command you would like to execute'
+    input = gets
+    input = input.strip
 
-  ap automation_object.third_screen.page_title.text
-  ap automation_object.third_screen.page_description.text
-
-  ap automation_object.fourth_screen.page_title.text
-  ap automation_object.fourth_screen.page_description.text
-
-  ap automation_object.fifth_screen.page_title.text
-  ap automation_object.fifth_screen.page_description.text
+    begin
+      ap eval(input)
+    rescue Exception => e
+      puts 'Error occurred'.colorize(:red)
+      ap e
+      ap e.class
+      ap e.message
+      ap e.backtrace
+    end
+  end
 ensure
   puts 'Press enter to quit...'
   input = gets
-  automation_object.quit
+  driver.quit
 end

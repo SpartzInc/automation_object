@@ -40,5 +40,5 @@ begin
 ensure
   puts 'Press enter to quit...'
   input = gets
-  driver.quit
+  automation_object.quit
 end
