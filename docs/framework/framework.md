@@ -1,9 +1,10 @@
 Framework Object Documentation
 ----
 
-Framework object will contain all the objects dynamically created based on the blue prints.
+Framework object is the dynamic DSL framework that will allow you to automate your app/website.
+The object will contain all the objects you have defined in your blue prints (YAML files)
 
-###Framework object instance methods:
+###Framework instance methods:
 *    [driver_object](#driver_object)
 *    [get_current_screen](#get_current_screen)
 *    [on](#on)

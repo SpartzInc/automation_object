@@ -1,11 +1,11 @@
 Initializing the framework
 ----
 
-Initializing the framework requires a few things.  One you will have to build the blue prints from a directory.  Then
+Initializing the framework requires a few things.  First you will have to load/merge the blue prints from a directory.  Then
 you will take the driver object and the blue prints object and create the framework object.
 
-The framework object will contain all the screens you have created in the blue prints and will control the changes
-in live screens and how you can access those screens.
+The dynamic DSL framework object will contain all the screens you have created in the blue prints
+and will control the changes screens and how you can access those screens.
 
 ### Table of Contents:
 *    [Simple framework creation](#simple-framework-creation)
@@ -23,7 +23,7 @@ require 'automation_object'
 #Create the driver, could also be Appium
 driver = Selenium::WebDriver.for :chrome
 
-#Get the blue prints from the directory and return the Hash into blue_prints
+#Loads the blue prints (YAML files) from the directory and return the merged Hash object, blue_prints
 blue_prints = AutomationObject::BluePrint.new('/full/path/to/blue/prints/directory')
 
 #Initiate the framework object with the driver and blue prints
