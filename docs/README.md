@@ -9,7 +9,7 @@ with this gem.
 
 ### Table of Contents:
 *    [Putting it together](#putting-it-together)
-*    [Blue Print Documentation](#blue-print-documentation)
+*    [Blue Print Documentation](#blue-print-documentation-yaml-configurations)
 *    [Framework Documentation](#framework-documentation)
 *    [Examples](#examples)
 
@@ -67,7 +67,7 @@ automation_object.search_screen.search_input.send_keys('looking for something')
 automation_object.search_screen.search_button.click
 ```
 
-### Blue Print Documentation (YAML)
+### Blue Print Documentation (YAML Configurations)
 - [Base Level Configurations](blue_prints/base_level_configurations.md)
   - Available base level configurations for blue prints
 - [Screen Level Configurations](blue_prints/screen_level_configurations.md)
