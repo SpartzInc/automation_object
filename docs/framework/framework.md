@@ -80,8 +80,6 @@ on the change_screen event you can use this method.  Implements [EventEmitter](h
 
 __Parameters__: Symbol (event name)
 
-__Returns__: Nil
-
 __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
