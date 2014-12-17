@@ -1,6 +1,6 @@
 ## Simple Example
 
-This example will provide some of the base features in AutomationObject without
+This example will provide some of the basic features in AutomationObject without
 cluttering you with too much information.
 
 ### Installation and Execution

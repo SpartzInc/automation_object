@@ -1,10 +1,10 @@
 ## Hooks Example
 
-This example has a bit tougher UI to automatic because there is a loading bar that shows in between the changing of screens.
+This example has a bit tougher UI to automate because there is a loading bar that shows in between the changing of screens.
 In the blue prints you will see how I cope with this and use hooks to wait for the loading bar to disappear and the screen
-to appear then allow to continue.
+to appear, then allow to continue.
 
-Some of the hooks are a little redundant but I wanted to display a couple different ways to deal with hooks.
+Some of the hooks are a little redundant but I wanted to display hooks in a couple different ways.
 
 ### Installation and Execution
 

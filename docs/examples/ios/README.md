@@ -1,7 +1,7 @@
 ## iOS Example
 
-This example is to show how you can use AutomationObject framework to automate apps.  I also recommend you use their
-GUI application to grab all the xPaths and layout your blueprints from their.
+This example is to show how you can use AutomationObject framework to automate iOS apps.  I also recommend you use their
+GUI application to grab all the xPaths and layout your blueprints from these.
 
 I did not automate the entire app, just wanted to give you an idea on how to automate iOS apps.
 

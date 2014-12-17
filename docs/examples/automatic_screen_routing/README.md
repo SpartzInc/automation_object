@@ -2,7 +2,7 @@
 
 This is an example copied over from the Simple example, with some changes in the run.rb file.
 
-In it, the file doesn't try to use the screens currently live and doesn't actually make the change to another screen itself.
+In it, the run.rb file doesn't try to use the screens currently live and doesn't actually make the change to another screen itself.
 It calls screens that are not live and the framework will try to automatically route to that screen.
 
 ### Installation and Execution

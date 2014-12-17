@@ -1,7 +1,8 @@
 ## Elements Example
 
 This example will show you how to use all the different element types available: Element, ElementArray, ElementHash, and
-ElementGroup.
+ElementGroup.  The example has blue prints that show you how to define these types and in the run.rb how to operate on those
+objects in the DSL framework.
 
 ### Installation and Execution
 

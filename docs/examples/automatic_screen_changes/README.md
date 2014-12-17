@@ -5,7 +5,7 @@ configuration in order to let the framework know which screens might be changing
 used when the app/site is driving the screen changes and not the automation program.
 
 Threading does occur while automatic screen changes are being monitored, lucky enough; there is mutexing on the driver
-object which prevents multiple communications to the driver from occurring.
+object which prevents multiple communications to the driver from occurring (stupid crazy IO errors as a result).
 
 ### Installation and Execution
 
