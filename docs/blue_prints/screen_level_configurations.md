@@ -35,30 +35,23 @@ default_screen: 'home_screen'
 screens:
   home_screen:
     elements:
-      login_button:
+      about_us_button:
         xpath: '//path/to/button'
         click:
           after:
-            change_screen: 'login_prompt'
-  login_prompt:
+            change_screen: 'about_us_prompt'
+  about_us_prompt: #Can name screens whatever you want
     accept:
       before:
         sleep: 1
       after:
         change_screen: 'home_screen'
-    elements:
-      username_field:
-        xpath: '//path/to/field'
-      password_field:
-        xpath: '//path/to/field'
 ```
 __Ruby Example with Above Blueprints__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
-automation_object.home_screen.login_button.click
-automation_object.login_prompt.username_field.send_keys('test@email.com')
-automation_object.login_prompt.password_field.send_keys('password')
-automation_object.login_prompt.accept
+automation_object.home_screen.about_us_button.click
+automation_object.about_us_prompt.accept #Runs hooks and accepts prompt in UI
 #Now on the home_screen
 ```
 ---
@@ -67,7 +60,7 @@ automation_object.login_prompt.accept
 
 __Expecting__: Array
 
-__Requirements__: Requires an Array of defined screens that also have live? configurations.  Only use when the screen
+__Requirements__: Requires an Array of defined screens that also have [live?](#live) configurations.  Only use when the screen
 can automatically change without any UI interactions.
 
 __Description__:  Typically this is used for Apps when the app might change screens automatically like a game.  This way
