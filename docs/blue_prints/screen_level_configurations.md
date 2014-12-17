@@ -26,8 +26,10 @@ __Expecting__: Hash
 
 __Requirements__: Hook key used when a screen is also a prompt.  This will occur more often then not in App automation.
 
-__Description__:  Hook configuration to be run when using the accept method on the screen object.  When accepting the prompt
-the accept hook will be run before and after the method is run.
+__Description__:  Hook configuration to be run when using the accept method on the screen object.  When accepting the prompt,
+the accept hook will be run before and after the driver method is run.
+
+__Available Sub-Keys__: [Hook Level Configurations](hook_level_configurations.md)
 
 __App Blueprint Example__:
 ```
@@ -51,7 +53,9 @@ __Ruby Example with Above Blueprints__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
 automation_object.home_screen.about_us_button.click
-automation_object.about_us_prompt.accept #Runs hooks and accepts prompt in UI
+#Runs hooks and accepts prompt in UI
+#Won't return until hooks are complete
+automation_object.about_us_prompt.accept
 #Now on the home_screen
 ```
 ---
@@ -60,11 +64,12 @@ automation_object.about_us_prompt.accept #Runs hooks and accepts prompt in UI
 
 __Expecting__: Array
 
-__Requirements__: Requires an Array of defined screens that also have [live?](#live) configurations.  Only use when the screen
-can automatically change without any UI interactions.
+__Requirements__: Requires an Array of defined screens that also have [live?](#live) configurations.
+Only use when the screen can automatically change without any UI interactions.
 
-__Description__:  Typically this is used for Apps when the app might change screens automatically like a game.  This way
-you can wait for screens to change, then test or interact with the UI.
+__Description__:  Typically this is used for apps when the app might change screens automatically like a game.
+This way you can wait for screens to change, then test or interact with the UI.  There is also thread protection on
+the driver so you can issue commands while a different thread monitors for screen changes.
 
 __Example__:
 ```
@@ -98,6 +103,8 @@ __Ruby Example with Above Blueprints__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
 
+#Use this variable to keep the main thread open via a loop until your finished testing.
+break_keep_alive_loop = false
 automation_object.on :change_screen do |screen_name|
   case screen_name
     when :your_turn_screen
@@ -105,7 +112,13 @@ automation_object.on :change_screen do |screen_name|
       automation_object.your_turn_screen.card_to_play.click
     when :game_results_screen
       #Do something on the results screen
+      break_keep_alive_loop = true
   end
+end
+
+#Keep the main thread alive!
+until break_keep_alive_loop
+  sleep(1)
 end
 ```
 ---
@@ -117,10 +130,12 @@ __Expecting__: Hash
 __Requirements__:  Hook that runs before a screen is loaded.  Works slightly differently then other hooks,
 there is no before or after sub-keys.
 
-__Description__:  Use to wait for screen to be ready before you interact with it or run the live? configuration.
+__Description__:  Use to wait for screen to be ready before allowing interactions on that screen.
 
-__Important__: There is no __before__ or __after__ sub-keys on this hook.  Every other hooks uses the before and after
-keys.
+__Important__: There is no __before__ or __after__ sub-keys on this hook.  Every other hook uses the before and after
+sub-keys.
+
+__Available Sub-Keys__: [Hook Level Configurations](hook_level_configurations.md)
 
 __Example__:
 ```
