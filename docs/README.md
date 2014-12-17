@@ -113,6 +113,8 @@ If you need an example of something, let me know; I will try to get it in here.
 - [Hooks example](examples/hooks)
   - Shows how to include hooks into framework events to create stable tests
   - Demonstrates how multiple windows are handled within the framework
+- [Modals example](examples/modals)
+  - Shows how to use modals, using the FancyBox jquery plugin as the demo
 - [No default screen example](examples/no_default_screen)
   - Sometimes sites/apps don't have a default screen.  This shows you how to implement that in blue prints
 - [Automatic screen routing example](examples/automatic_screen_routing)
