@@ -240,7 +240,7 @@ __Description__: Same as above, just slightly different name
 
 ### visible?:
 
-__Description__: Similar to (invisible?)[#invisible].  Will return true if the element is visible and false if the
+__Description__: Similar to [invisible?](#invisible).  Will return true if the element is visible and false if the
 element is invisible.
 
 __Parameters__: None
