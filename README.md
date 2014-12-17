@@ -12,7 +12,8 @@ screens, modals, elements, and hooks which help you effectively automate while k
 2. Add all the UI relationships you need to create an effective dynamic DSL framework
 3. Control waiting and sleeping conditions on screen/element interactions using hooks for less brittle UI testing
 4. Use the DSL framework to effectively control your automation
-5. Enables DRY automation test development by storing UI representations in configuration files instead of code
+5. Automatic routing between screens, modals, windows, iframes to enable less code intensive automation.
+6. Enables DRY automation test development by storing UI representations in configuration files instead of code
 
 ### Fair Warning
 
