@@ -359,7 +359,7 @@ __Requirements__:  This is used to check that a screen is actually live?, will t
 and the requirements are not met. Use 'elements' sub-key to define the requirements for that screen to be live.
 
 __Description__: live? configurations can be used when no default screen is present, [automatic_screen_changes](#automation_screen_changes),
-and [possible_screen_changes](hook_level_keys.md#possible_screen_changes] hook where the framework has to figure out which screen is live.
+and [possible_screen_changes](hook_level_keys.md#possible_screen_changes) hook where the framework has to figure out which screen is live.
 Also if you want to throw errors when you not on the screen you expected you would use this.
 
 __Available Before/After Hook Sub-Keys__: [Hook Level Configurations](hook_level_configurations.md)
