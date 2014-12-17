@@ -173,7 +173,8 @@ __Expecting__: Hash
 
 __Description__: Use views when you have commonalities between screens.  This can help keep your configurations DRY
 and not have to repeat yourself throughout each YAML file.  Views can have all the same configurations available as
-[screens](screen_level_configurations.md).
+[screens](screen_level_configurations.md).  They are then included into screens using
+[included_views](screen_level_configurations.md#included_views).
 
 __Example__:
 ```
