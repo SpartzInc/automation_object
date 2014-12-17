@@ -2,7 +2,7 @@ Screen Object Documentation
 ----
 
 Screen objects are dynamically created at runtime based on the configurations. For example if you defined in your
-blue prints a 'home_screen' and 'list_screen' there will be two Screen objects available underneath the framework object.
+blue prints a 'home_screen' and 'list_screen' there will be two screen objects available underneath the framework object.
 
 When accessing a screen object, the framework will try to automatically route to that screen or do nothing if the screen
 is already live.  If there are multiple windows that framework will automatically switch between window handles when accessing
@@ -165,7 +165,7 @@ __Returns__: Nil
 __Example__:
 ```
 automation_object = AutomationObject::Framework.new(driver, blue_prints)
-automation_object.home_screen.screenshot('//path/to/png/file.png')
+automation_object.home_screen.screenshot('/path/to/png/file.png')
 ```
 ---
 
