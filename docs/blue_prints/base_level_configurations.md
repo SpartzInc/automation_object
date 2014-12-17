@@ -181,7 +181,11 @@ __Example__:
 base_url: 'http://www.google.com'
 default_screen: 'home_screen'
 views:
-  common_elements_view:
+  common_screen_view:
+    before_load: #Hook when a screen is loaded
+      wait_for_elements:
+        - element_name: 'title'
+          exists?: true
     elements:
       title:
         css: 'h1#title'
@@ -190,9 +194,9 @@ views:
 screens:
   home_screen:
     included_views:
-      - 'common_elements_view'
+      - 'common_screen_view'
   search_screen:
     included_views:
-      - 'common_elements_view'
+      - 'common_screen_view'
 ```
 ---
