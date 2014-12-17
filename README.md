@@ -9,10 +9,10 @@ screens, modals, elements, and hooks which help you effectively automate while k
 ### Features
 
 1. Use YAML configuration files to represent UI of a website or app
-2. Add all kinds of relationships between screens and elements for DSL framework
+2. Add all the UI relationships you need to create an effective dynamic DSL framework
 3. Control waiting and sleeping conditions on screen/element interactions using hooks for less brittle UI testing
-3. Use DSL framework to effectively control your automation
-4. Ability to version UI representation in YAML files for DRY UI test development
+4. Use the DSL framework to effectively control your automation
+5. Enables DRY automation test development by storing UI representations in configuration files instead of code
 
 ### Fair Warning
 
