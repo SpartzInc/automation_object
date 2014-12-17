@@ -28,8 +28,8 @@ which then I will upgrade the automation_object gem to 1.0.
 I will also hold off on making large changes/updates until the 1.0 version is in place.  Will make small updates
 here and there to fix bugs.
 
-Past all of this self-deprecation, this gem does work very well for our company's automation testing and has
-improved our productivity and testing stability greatly.
+This gem does work very well for our company's automation testing and has improved our productivity and
+testing stability greatly.
 
 ### Usage
 
