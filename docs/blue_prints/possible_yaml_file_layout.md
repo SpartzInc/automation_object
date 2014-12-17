@@ -5,7 +5,7 @@ It is possible to arrange your blue prints in any directory/file structure as yo
 by a common parent directory for each UI representation.  I would recommend splitting up your YAML files by screens
 and views.  Here is an example of a directory/file structure we typically use.
 
-Remember all of these hashes are merged into the same hash.  As long as you keep the levels correct you should be fine.
+Remember all of these YAML files are merged into the same hash.  As long as you keep the levels correct you should be fine.
 
 Example File Structure:
 ```
