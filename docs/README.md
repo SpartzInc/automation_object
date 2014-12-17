@@ -1,5 +1,11 @@
-AutomationObject Framework README
+AutomationObject README
 ----
+
+The documentation has been broken up into a few different parts.  I start off with a small example so that you may have
+an understanding of what this gem does.  Then there is the blue prints documentation which describes all of the ways you
+can set up the YAML configuration files.  The framework documentation shows how you would create and use the dynamic DSL
+framework.  Finally there are a bunch of examples at the bottom to show how to implement a variety of features offered
+with this gem.
 
 ### Table of Contents:
 *    [Putting it together](#putting-it-together)
@@ -9,39 +15,12 @@ AutomationObject Framework README
 
 ### Putting it together
 
-AutomationObject Framework allows you to create YAML configurations to define UI on a website or app.
-You can put all YAML files into a single folder to represent a website or app.  YAML files are then merged
-into a single Hash object.  Using the Hash object you can create a dynamic DSL framework to that reflects your
-configuration and automate your app or website.
+This section will show you exactly what this gem does.  It will show how to create YAML files, load those YAML files,
+and the creation/usage of the dynamic DSL framework.  The dynamic DSL framework will represent the configurations you
+load into it.  Typically you will split of YAML files by screen or view and keep them in the same directory
+in order to keep configurations shorter.  You may also include sub-directories into your YAML configuration folder.
 
-Code for loading YAML configuration files in a folder to be merged into a single blueprint object (Hash):
-```
-require 'automation_object'
-
-#Set base directory so you don't have to specify full folder path each time
-AutomationObject::BluePrint::base_directory = '/base/blue_print/directory'
-
-#Returns merged Hash
-blue_prints = AutomationObject::BluePrint.new('/path/to/specific/blueprints')
-```
-
-Then in turn you can take that Hash object and create a new dynamic framework representing your configuration along
-with your Appium or Selenium driver:
-```
-#...continued from above
-driver = Selenium::WebDriver.for :chrome
-automation_object = AutomationObject::Framework.new(driver, blue_prints)
-
-#purely hypothetical possible usage of automation_object variable
-automation_object.home_screen.search_button.click
-automation_object.search_screen.search_input.send_keys('looking for something')
-automation_object.search_screen.search_button.click
-```
-
-As you can see from the small hypothetical example above, you can define screens, elements in YAML configurations and
-work with the elements through AutomationObject::Framework instance object.
-
-Here is the combined simple YAML configuration for the hypothetical example above:
+__Combined YAML Code for Mapping the UI of a Website or App__:
 ```
 base_url: 'http://www.google.com'
 default_screen: 'home_screen'
@@ -65,7 +44,30 @@ screens:
         xpath: '//xpath/to/element'
 ```
 
-### Blue Prints Documentation (YAML)
+__Ruby Code for Loading and Merging YAML configuration files__:
+```
+require 'automation_object'
+
+#Set base directory so you don't have to specify full folder path each time
+AutomationObject::BluePrint::base_directory = '/base/blue_print/directory'
+
+#Returns merged Hash
+blue_prints = AutomationObject::BluePrint.new('/path/to/specific/blueprints')
+```
+
+__Continued Ruby Code for Creating and Using the DSL Framework__:
+```
+#...continued from above
+driver = Selenium::WebDriver.for :chrome
+automation_object = AutomationObject::Framework.new(driver, blue_prints)
+
+#purely hypothetical possible usage of AutomationObject::Framework instance object
+automation_object.home_screen.search_button.click
+automation_object.search_screen.search_input.send_keys('looking for something')
+automation_object.search_screen.search_button.click
+```
+
+### Blue Print Documentation (YAML)
 - [Base Level Configurations](blue_prints/base_level_configurations.md)
   - Available base level configurations for blue prints
 - [Screen Level Configurations](blue_prints/screen_level_configurations.md)

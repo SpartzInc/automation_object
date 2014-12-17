@@ -33,7 +33,7 @@ testing stability greatly.
 
 ### Usage
 
-__[Documentation on AutomationObject](docs/README.md)__ contains all examples and usage of the AutomationObject.
+__[Documentation on AutomationObject](docs/README.md)__ contains all the usages and examples of the AutomationObject gem.
 
 ### Installation
 
