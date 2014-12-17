@@ -418,6 +418,13 @@ screens:
       after:
         reset_screen: true
 ```
+__Ruby Example with Above Blueprints__:
+```
+automation_object = AutomationObject::Framework.new(driver, blue_prints)
+automation_object.home_screen.scroll_up #Run scroll_up hooks and method to driver to scroll up
+automation_object.home_screen.scroll_down #Same as above but scroll down
+automation_object.home_screen.scroll_right #Same method but change screen to list_screen
+```
 ---
 
 ### scroll_down:
