@@ -21,7 +21,7 @@ keeps the complex automation code internal to the API.
 
 This is the initial release of this project, kind of a proof of concept.  It is very coupled/very long internal methods (sorry) but stable.
 I plan creating a skeleton framework with proper unit testing and patterns implemented.  Will be creating a separate project
-for that, which will then be merged into this project.  If you are interested in having input or helping with that let me know,
+for that, which will then be merged back into this project.  If you are interested in having input or helping with that let me know,
 will probably keep it private unless people want to contribute to that effort.  Goal end date for that will be Jan/Feb 2015
 which then I will upgrade the automation_object gem to 1.0.
 
