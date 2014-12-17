@@ -94,6 +94,8 @@ automation_object.search_screen.search_button.click
 
 ### Examples
 
+These examples should help you get a good idea of how to use AutomationObject without all the documentation above.
+All of these examples are fairly simple so that you can get an idea of how all the different parts/configurations work.
 If you need an example of something, let me know; I will try to get it in here.
 
 - [Simple example](examples/simple)

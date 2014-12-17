@@ -16,8 +16,8 @@ screens:
       new_window_button:
         css: '#new_window_button'
         click: #element method hook
-          after: #run hook after method is complete
-            wait_for_new_window: true
+          after:
+            wait_for_new_window: true #Runs before change_screen
             change_screen: 'new_window_screen' #Use for changing screens and adding
   new_window_screen:
     before_load: #Run before the screen is completely loaded
