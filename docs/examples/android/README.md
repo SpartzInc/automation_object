@@ -3,8 +3,10 @@
 This example is to show how you can use AutomationObject framework to automate apps.  I also recommend you use their
 GUI application to grab all the xPaths and layout your blueprints from their.
 
-__Important__: You will need to start the Appium server on port 4723 which is the default port.  If you are unfamiliar
- with their node setup you can use their GUI application [here](http://appium.io/).
+__Important__:
+*  You will need to start the Appium server on port 4723 which is the default port.
+*  If you are unfamiliar with their node setup you can use their GUI application [here](http://appium.io/).
+*  Also don't forget to add the Android paths to your bash profile. [Documentation Here](https://github.com/appium/ruby_console/blob/master/osx.md#bash-profile)
 
 __Built Using__:
 *  Android API 17
