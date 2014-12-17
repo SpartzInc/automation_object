@@ -1,4 +1,4 @@
-## AutomationObject Framework for UI Automation (Ruby)
+## AutomationObject Framework for UI Automation (Ruby Gem)
 
 YAML Configuration Based Dynamic DSL Framework for UI automation (Selenium/Appium)
 
