@@ -9,7 +9,7 @@ with this gem.
 
 ### Table of Contents:
 *    [Putting it together](#putting-it-together)
-*    [Blue Print Documentation](#blue-print-documentation-yaml-configurations)
+*    [Blue Print Documentation (YAML Configurations)](#blue-print-documentation-yaml-configurations)
 *    [Framework Documentation](#framework-documentation)
 *    [Examples](#examples)
 
