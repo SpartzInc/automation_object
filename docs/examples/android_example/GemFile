@@ -1,4 +1,0 @@
-source 'https://rubygems.org'
-
-gem 'automation_object'
-gem 'appium_lib'
