@@ -15,5 +15,5 @@ end
 
 desc 'Release Gem'
 task :release => :build do
-  system "gem push automation_object-#{AutomationObject::VERSION}"
+  system "gem push ./pkg/automation_object-#{AutomationObject::VERSION}.gem"
 end
