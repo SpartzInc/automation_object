@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version = AutomationObject::VERSION
   spec.authors = ['Michael Blatter']
   spec.email = ['mblatter@spartzinc.com']
-  spec.summary = %q{YAML Configuration Based DSL Framework for UI Automation}
+  spec.summary = %q{YAML Configuration Based Dynamic DSL Framework for UI Automation}
   spec.description = %q{}
   spec.homepage = 'https://github.com/mikeblatter/automation_object'
   spec.license = 'MIT'
@@ -19,13 +19,17 @@ Gem::Specification.new do |spec|
   spec.test_files = spec.files.grep(%r{^(docs|test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'bundler', '~> 1.6'
-  spec.add_dependency 'rake', '~> 0'
+  spec.add_development_dependency 'bundler', '~> 1.6'
+  spec.add_development_dependency 'rake', '~> 0'
 
-  spec.add_dependency 'colorize', '~> 0.6', '>= 0.6.0'
-  spec.add_dependency 'awesome_print', '~> 1.2', '>= 1.2.0'
-  spec.add_dependency 'thread', '~> 0.1', '>= 0.1.4'
-  spec.add_dependency 'event_emitter', '~> 0.2', '>= 0.2.5'
-  spec.add_dependency 'rspec', '~> 3.1.0', '>= 3.1.0'
-  spec.add_dependency 'rspec-expectations', '~> 3.1', '>= 3.1.2'
+  spec.add_runtime_dependency 'colorize', '~> 0.6', '>= 0.6.0'
+  spec.add_runtime_dependency 'awesome_print', '~> 1.2', '>= 1.2.0'
+  spec.add_runtime_dependency 'thread', '~> 0.1', '>= 0.1.4'
+  spec.add_runtime_dependency 'event_emitter', '~> 0.2', '>= 0.2.5'
+
+  spec.add_runtime_dependency 'rspec', '~> 3.1.0', '>= 3.1.0'
+  spec.add_runtime_dependency 'rspec-expectations', '~> 3.1', '>= 3.1.2'
+
+  spec.add_runtime_dependency 'appium_lib', '~> 4.1', '>= 4.1.0'
+  spec.add_runtime_dependency 'selenium-webdriver', '~> 2.44', '>= 2.44.0'
 end

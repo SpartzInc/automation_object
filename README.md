@@ -1,19 +1,20 @@
 ## AutomationObject Framework for UI Automation (Ruby Gem)
 
-YAML Configuration Based Dynamic DSL Framework for UI automation (Selenium/Appium)
+YAML Configuration Based Dynamic DSL Framework for UI Automation (Selenium/Appium)
 
-Allows for the usage of YAML configuration files to define the UI of a website or app which in turn can be used to create
-a dynamic DSL framework that controls the automation.  By defining screens, modals, elements, hooks, you can effectively
-issue commands to the dynamic DSL framework API which in turn controls the automation and does the heavy lifting work with the
-Selenium or Appium driver.
+This gem provides a way to create a dynamic usable DSL framework representing your website or app. By using a Selenium
+or Appium driver and YAML configurations, this API will provide a layer in between your automation code and the driver.
+By creating YAML configurations that represents your website/app, the DSL framework in turn will reflect your configuration
+and allow you to control the automation through the DSL framework.  Using this gem can help remove tedious tasks that are often
+repeated throughout code and help improve the scalability of code by mapping UI in YAML configuration files.
 
 ### Features
 
 1. Use YAML configuration files to represent UI of a website or app
-2. Add all the UI relationships needed to create an effective dynamic DSL framework
+2. Add all the UI screens/elements/relationships/hooks needed to create an effective dynamic DSL framework
 3. Control waiting and sleeping conditions on screen/element interactions using hooks for less brittle UI testing
 4. Use the DSL framework to effectively control your automation
-5. Automatic routing between screens, modals, windows, iframes enables less code intensive automation.
+5. Automatically routing between screens, modals, windows, iframes enables less code intensive automation.
 6. Enables DRY automation test development by storing UI representations in configuration files instead of code and
 keeps the complex automation code internal to the API.
 
