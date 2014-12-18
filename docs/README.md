@@ -47,6 +47,7 @@ screens:
 __Ruby Code for Loading and Merging YAML configuration files__:
 ```
 require 'automation_object'
+require 'selenium-webdriver'
 
 #Set base directory so you don't have to specify full folder path each time
 AutomationObject::BluePrint::base_directory = '/base/blue_print/directory'
