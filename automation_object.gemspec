@@ -14,7 +14,7 @@ Implementing Selenium/Appium driver and YAML configurations, this API will provi
 By creating YAML configurations that represents your website/app, the DSL framework in turn will reflect your configuration
 and allow you to control the automation through the DSL framework.  Using this gem can help remove tedious tasks that are often
 repeated throughout code and help improve the scalability of code by mapping UI in YAML configuration files.}
-  spec.homepage = 'https://github.com/mikeblatter/automation_object'
+  spec.homepage = 'https://github.com/spartzoss/automation_object'
   spec.license = 'MIT'
 
   #spec.files = `git ls-files -z`.split("\x0")
