@@ -1,6 +1,5 @@
 require 'bundler/gem_tasks'
 require 'fileutils'
-require 'awesome_print'
 
 desc 'Build Gem'
 task :build do
