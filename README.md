@@ -1,9 +1,9 @@
 ## AutomationObject Framework for UI Automation (Ruby Gem)
 
-YAML Configuration Based Dynamic DSL Framework for UI Automation (Selenium/Appium)
+YAML configuration based dynamic DSL framework for UI automation using Selenium or Appium drivers.
 
-This gem provides a way to create a dynamic usable DSL framework representing your website or app. By using a Selenium
-or Appium driver and YAML configurations, this API will provide a layer in between your automation code and the driver.
+This gem provides a way to create a dynamic usable DSL framework representing your website or app. Implementing Selenium/Appium driver
+and YAML configurations, this API will provide a layer in between your automation code and the driver.
 By creating YAML configurations that represents your website/app, the DSL framework in turn will reflect your configuration
 and allow you to control the automation through the DSL framework.  Using this gem can help remove tedious tasks that are often
 repeated throughout code and help improve the scalability of code by mapping UI in YAML configuration files.
