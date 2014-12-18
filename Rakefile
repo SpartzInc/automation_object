@@ -11,7 +11,7 @@ end
 
 desc 'Install Gem'
 task :install => :build do
-  system "gem install ./bin/automation_object-#{AutomationObject::VERSION}.gem"
+  system "gem install ./pkg/automation_object-#{AutomationObject::VERSION}.gem"
 end
 
 desc 'Release Gem'
